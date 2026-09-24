@@ -1,0 +1,1102 @@
+[
+  {
+    "center_id": "PC001",
+    "center_name": "Government Procurement Center - Baramati",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "location": "Baramati APMC Market Yard, Pune, Maharashtra",
+    "latitude": 18,
+    "longitude": 73.8,
+    "accepted_crops": [
+      "Soybean",
+      "Wheat",
+      "Cotton"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC002",
+    "center_name": "Government Procurement Center - Phaltan",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "location": "Phaltan APMC Market Yard, Satara, Maharashtra",
+    "latitude": 18.1,
+    "longitude": 73.95,
+    "accepted_crops": [
+      "Gram (Chana)",
+      "Cotton",
+      "Jowar"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC003",
+    "center_name": "Government Procurement Center - Tasgaon",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "location": "Tasgaon APMC Market Yard, Sangli, Maharashtra",
+    "latitude": 18.2,
+    "longitude": 74.1,
+    "accepted_crops": [
+      "Tur (Arhar)",
+      "Jowar",
+      "Maize"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC004",
+    "center_name": "Government Procurement Center - Radhanagari",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "location": "Radhanagari APMC Market Yard, Kolhapur, Maharashtra",
+    "latitude": 18.3,
+    "longitude": 74.25,
+    "accepted_crops": [
+      "Bajra",
+      "Maize",
+      "Sunflower"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC005",
+    "center_name": "Government Procurement Center - Dindori",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "location": "Dindori APMC Market Yard, Nashik, Maharashtra",
+    "latitude": 18.4,
+    "longitude": 74.4,
+    "accepted_crops": [
+      "Groundnut",
+      "Sunflower",
+      "Soybean"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC006",
+    "center_name": "Government Procurement Center - Rahata",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "location": "Rahata APMC Market Yard, Ahmednagar, Maharashtra",
+    "latitude": 18.5,
+    "longitude": 74.55,
+    "accepted_crops": [
+      "Urad",
+      "Soybean",
+      "Gram (Chana)"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC007",
+    "center_name": "Government Procurement Center - Barshi",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "location": "Barshi APMC Market Yard, Solapur, Maharashtra",
+    "latitude": 18.6,
+    "longitude": 74.7,
+    "accepted_crops": [
+      "Wheat",
+      "Gram (Chana)",
+      "Tur (Arhar)"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC008",
+    "center_name": "Government Procurement Center - Vaijapur",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "location": "Vaijapur APMC Market Yard, Aurangabad, Maharashtra",
+    "latitude": 18.7,
+    "longitude": 74.85,
+    "accepted_crops": [
+      "Cotton",
+      "Tur (Arhar)",
+      "Bajra"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC009",
+    "center_name": "Government Procurement Center - Jamner",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "location": "Jamner APMC Market Yard, Jalgaon, Maharashtra",
+    "latitude": 18.8,
+    "longitude": 75,
+    "accepted_crops": [
+      "Jowar",
+      "Bajra",
+      "Groundnut"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC010",
+    "center_name": "Government Procurement Center - Sakri",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "location": "Sakri APMC Market Yard, Dhule, Maharashtra",
+    "latitude": 18.9,
+    "longitude": 75.15,
+    "accepted_crops": [
+      "Maize",
+      "Groundnut",
+      "Urad"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC011",
+    "center_name": "Government Procurement Center - Taloda",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "location": "Taloda APMC Market Yard, Nandurbar, Maharashtra",
+    "latitude": 19,
+    "longitude": 75.3,
+    "accepted_crops": [
+      "Sunflower",
+      "Urad",
+      "Wheat"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC012",
+    "center_name": "Government Procurement Center - Majalgaon",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "location": "Majalgaon APMC Market Yard, Beed, Maharashtra",
+    "latitude": 19.1,
+    "longitude": 75.45,
+    "accepted_crops": [
+      "Soybean",
+      "Wheat",
+      "Cotton"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC013",
+    "center_name": "Government Procurement Center - Udgir",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "location": "Udgir APMC Market Yard, Latur, Maharashtra",
+    "latitude": 19.2,
+    "longitude": 75.6,
+    "accepted_crops": [
+      "Gram (Chana)",
+      "Cotton",
+      "Jowar"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC014",
+    "center_name": "Government Procurement Center - Paranda",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "location": "Paranda APMC Market Yard, Osmanabad, Maharashtra",
+    "latitude": 19.3,
+    "longitude": 75.75,
+    "accepted_crops": [
+      "Tur (Arhar)",
+      "Jowar",
+      "Maize"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC015",
+    "center_name": "Government Procurement Center - Hingna",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "location": "Hingna APMC Market Yard, Nagpur, Maharashtra",
+    "latitude": 19.4,
+    "longitude": 75.9,
+    "accepted_crops": [
+      "Bajra",
+      "Maize",
+      "Sunflower"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC016",
+    "center_name": "Government Procurement Center - Achalpur",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "location": "Achalpur APMC Market Yard, Amravati, Maharashtra",
+    "latitude": 19.5,
+    "longitude": 76.05,
+    "accepted_crops": [
+      "Groundnut",
+      "Sunflower",
+      "Soybean"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC017",
+    "center_name": "Government Procurement Center - Akot",
+    "district": "Akola",
+    "taluka": "Akot",
+    "location": "Akot APMC Market Yard, Akola, Maharashtra",
+    "latitude": 19.6,
+    "longitude": 76.2,
+    "accepted_crops": [
+      "Urad",
+      "Soybean",
+      "Gram (Chana)"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC018",
+    "center_name": "Government Procurement Center - Wani",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "location": "Wani APMC Market Yard, Yavatmal, Maharashtra",
+    "latitude": 19.7,
+    "longitude": 76.35,
+    "accepted_crops": [
+      "Wheat",
+      "Gram (Chana)",
+      "Tur (Arhar)"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC019",
+    "center_name": "Government Procurement Center - Seloo",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "location": "Seloo APMC Market Yard, Wardha, Maharashtra",
+    "latitude": 19.8,
+    "longitude": 76.5,
+    "accepted_crops": [
+      "Cotton",
+      "Tur (Arhar)",
+      "Bajra"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC020",
+    "center_name": "Government Procurement Center - Jalgaon Jamod",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "location": "Jalgaon Jamod APMC Market Yard, Buldhana, Maharashtra",
+    "latitude": 19.9,
+    "longitude": 76.65,
+    "accepted_crops": [
+      "Jowar",
+      "Bajra",
+      "Groundnut"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC021",
+    "center_name": "Government Procurement Center - Baramati",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "location": "Baramati APMC Market Yard, Pune, Maharashtra",
+    "latitude": 20,
+    "longitude": 76.8,
+    "accepted_crops": [
+      "Maize",
+      "Groundnut",
+      "Urad"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC022",
+    "center_name": "Government Procurement Center - Phaltan",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "location": "Phaltan APMC Market Yard, Satara, Maharashtra",
+    "latitude": 20.1,
+    "longitude": 76.95,
+    "accepted_crops": [
+      "Sunflower",
+      "Urad",
+      "Wheat"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC023",
+    "center_name": "Government Procurement Center - Tasgaon",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "location": "Tasgaon APMC Market Yard, Sangli, Maharashtra",
+    "latitude": 20.2,
+    "longitude": 77.1,
+    "accepted_crops": [
+      "Soybean",
+      "Wheat",
+      "Cotton"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC024",
+    "center_name": "Government Procurement Center - Radhanagari",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "location": "Radhanagari APMC Market Yard, Kolhapur, Maharashtra",
+    "latitude": 20.3,
+    "longitude": 77.25,
+    "accepted_crops": [
+      "Gram (Chana)",
+      "Cotton",
+      "Jowar"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC025",
+    "center_name": "Government Procurement Center - Dindori",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "location": "Dindori APMC Market Yard, Nashik, Maharashtra",
+    "latitude": 20.4,
+    "longitude": 77.4,
+    "accepted_crops": [
+      "Tur (Arhar)",
+      "Jowar",
+      "Maize"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC026",
+    "center_name": "Government Procurement Center - Rahata",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "location": "Rahata APMC Market Yard, Ahmednagar, Maharashtra",
+    "latitude": 20.5,
+    "longitude": 77.55,
+    "accepted_crops": [
+      "Bajra",
+      "Maize",
+      "Sunflower"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC027",
+    "center_name": "Government Procurement Center - Barshi",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "location": "Barshi APMC Market Yard, Solapur, Maharashtra",
+    "latitude": 20.6,
+    "longitude": 77.7,
+    "accepted_crops": [
+      "Groundnut",
+      "Sunflower",
+      "Soybean"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC028",
+    "center_name": "Government Procurement Center - Vaijapur",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "location": "Vaijapur APMC Market Yard, Aurangabad, Maharashtra",
+    "latitude": 20.7,
+    "longitude": 77.85,
+    "accepted_crops": [
+      "Urad",
+      "Soybean",
+      "Gram (Chana)"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC029",
+    "center_name": "Government Procurement Center - Jamner",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "location": "Jamner APMC Market Yard, Jalgaon, Maharashtra",
+    "latitude": 20.8,
+    "longitude": 78,
+    "accepted_crops": [
+      "Wheat",
+      "Gram (Chana)",
+      "Tur (Arhar)"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC030",
+    "center_name": "Government Procurement Center - Sakri",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "location": "Sakri APMC Market Yard, Dhule, Maharashtra",
+    "latitude": 20.9,
+    "longitude": 78.15,
+    "accepted_crops": [
+      "Cotton",
+      "Tur (Arhar)",
+      "Bajra"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC031",
+    "center_name": "Government Procurement Center - Taloda",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "location": "Taloda APMC Market Yard, Nandurbar, Maharashtra",
+    "latitude": 21,
+    "longitude": 78.3,
+    "accepted_crops": [
+      "Jowar",
+      "Bajra",
+      "Groundnut"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC032",
+    "center_name": "Government Procurement Center - Majalgaon",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "location": "Majalgaon APMC Market Yard, Beed, Maharashtra",
+    "latitude": 21.1,
+    "longitude": 78.45,
+    "accepted_crops": [
+      "Maize",
+      "Groundnut",
+      "Urad"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC033",
+    "center_name": "Government Procurement Center - Udgir",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "location": "Udgir APMC Market Yard, Latur, Maharashtra",
+    "latitude": 21.2,
+    "longitude": 78.6,
+    "accepted_crops": [
+      "Sunflower",
+      "Urad",
+      "Wheat"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC034",
+    "center_name": "Government Procurement Center - Paranda",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "location": "Paranda APMC Market Yard, Osmanabad, Maharashtra",
+    "latitude": 21.3,
+    "longitude": 78.75,
+    "accepted_crops": [
+      "Soybean",
+      "Wheat",
+      "Cotton"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC035",
+    "center_name": "Government Procurement Center - Hingna",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "location": "Hingna APMC Market Yard, Nagpur, Maharashtra",
+    "latitude": 21.4,
+    "longitude": 78.9,
+    "accepted_crops": [
+      "Gram (Chana)",
+      "Cotton",
+      "Jowar"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC036",
+    "center_name": "Government Procurement Center - Achalpur",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "location": "Achalpur APMC Market Yard, Amravati, Maharashtra",
+    "latitude": 18,
+    "longitude": 79.05,
+    "accepted_crops": [
+      "Tur (Arhar)",
+      "Jowar",
+      "Maize"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC037",
+    "center_name": "Government Procurement Center - Akot",
+    "district": "Akola",
+    "taluka": "Akot",
+    "location": "Akot APMC Market Yard, Akola, Maharashtra",
+    "latitude": 18.1,
+    "longitude": 79.2,
+    "accepted_crops": [
+      "Bajra",
+      "Maize",
+      "Sunflower"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC038",
+    "center_name": "Government Procurement Center - Wani",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "location": "Wani APMC Market Yard, Yavatmal, Maharashtra",
+    "latitude": 18.2,
+    "longitude": 73.85,
+    "accepted_crops": [
+      "Groundnut",
+      "Sunflower",
+      "Soybean"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC039",
+    "center_name": "Government Procurement Center - Seloo",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "location": "Seloo APMC Market Yard, Wardha, Maharashtra",
+    "latitude": 18.3,
+    "longitude": 74,
+    "accepted_crops": [
+      "Urad",
+      "Soybean",
+      "Gram (Chana)"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC040",
+    "center_name": "Government Procurement Center - Jalgaon Jamod",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "location": "Jalgaon Jamod APMC Market Yard, Buldhana, Maharashtra",
+    "latitude": 18.4,
+    "longitude": 74.15,
+    "accepted_crops": [
+      "Wheat",
+      "Gram (Chana)",
+      "Tur (Arhar)"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC041",
+    "center_name": "Government Procurement Center - Baramati",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "location": "Baramati APMC Market Yard, Pune, Maharashtra",
+    "latitude": 18.5,
+    "longitude": 74.3,
+    "accepted_crops": [
+      "Cotton",
+      "Tur (Arhar)",
+      "Bajra"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC042",
+    "center_name": "Government Procurement Center - Phaltan",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "location": "Phaltan APMC Market Yard, Satara, Maharashtra",
+    "latitude": 18.6,
+    "longitude": 74.45,
+    "accepted_crops": [
+      "Jowar",
+      "Bajra",
+      "Groundnut"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC043",
+    "center_name": "Government Procurement Center - Tasgaon",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "location": "Tasgaon APMC Market Yard, Sangli, Maharashtra",
+    "latitude": 18.7,
+    "longitude": 74.6,
+    "accepted_crops": [
+      "Maize",
+      "Groundnut",
+      "Urad"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC044",
+    "center_name": "Government Procurement Center - Radhanagari",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "location": "Radhanagari APMC Market Yard, Kolhapur, Maharashtra",
+    "latitude": 18.8,
+    "longitude": 74.75,
+    "accepted_crops": [
+      "Sunflower",
+      "Urad",
+      "Wheat"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC045",
+    "center_name": "Government Procurement Center - Dindori",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "location": "Dindori APMC Market Yard, Nashik, Maharashtra",
+    "latitude": 18.9,
+    "longitude": 74.9,
+    "accepted_crops": [
+      "Soybean",
+      "Wheat",
+      "Cotton"
+    ],
+    "intake_capacity": 5000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC046",
+    "center_name": "Government Procurement Center - Rahata",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "location": "Rahata APMC Market Yard, Ahmednagar, Maharashtra",
+    "latitude": 19,
+    "longitude": 75.05,
+    "accepted_crops": [
+      "Gram (Chana)",
+      "Cotton",
+      "Jowar"
+    ],
+    "intake_capacity": 6000,
+    "daily_capacity": 300,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC047",
+    "center_name": "Government Procurement Center - Barshi",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "location": "Barshi APMC Market Yard, Solapur, Maharashtra",
+    "latitude": 19.1,
+    "longitude": 75.2,
+    "accepted_crops": [
+      "Tur (Arhar)",
+      "Jowar",
+      "Maize"
+    ],
+    "intake_capacity": 7500,
+    "daily_capacity": 400,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC048",
+    "center_name": "Government Procurement Center - Vaijapur",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "location": "Vaijapur APMC Market Yard, Aurangabad, Maharashtra",
+    "latitude": 19.2,
+    "longitude": 75.35,
+    "accepted_crops": [
+      "Bajra",
+      "Maize",
+      "Sunflower"
+    ],
+    "intake_capacity": 10000,
+    "daily_capacity": 500,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC049",
+    "center_name": "Government Procurement Center - Jamner",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "location": "Jamner APMC Market Yard, Jalgaon, Maharashtra",
+    "latitude": 19.3,
+    "longitude": 75.5,
+    "accepted_crops": [
+      "Groundnut",
+      "Sunflower",
+      "Soybean"
+    ],
+    "intake_capacity": 3000,
+    "daily_capacity": 600,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "inactive",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  },
+  {
+    "center_id": "PC050",
+    "center_name": "Government Procurement Center - Sakri",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "location": "Sakri APMC Market Yard, Dhule, Maharashtra",
+    "latitude": 19.4,
+    "longitude": 75.65,
+    "accepted_crops": [
+      "Urad",
+      "Soybean",
+      "Gram (Chana)"
+    ],
+    "intake_capacity": 4000,
+    "daily_capacity": 800,
+    "operating_hours": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "status": "active",
+    "dataset_label": "Prototype Synthetic Government Dataset"
+  }
+]

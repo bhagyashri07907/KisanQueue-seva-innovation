@@ -1,0 +1,6 @@
+{
+  "name": "KisanQueue Web Portal",
+  "description": "Official Admin & Procurement Officer portal for KisanQueue agricultural procurement slot booking and verification management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,1202 @@
+[
+  {
+    "farmer_id": "FR001",
+    "farmer_name": "Suresh Jadhav",
+    "mobile": "+91 9720004731",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "village": "Phaltan Khurd",
+    "kisan_credit_card": "KCC-MH-SAT-10001",
+    "aadhaar_ref": "XXXX-XXXX-1073"
+  },
+  {
+    "farmer_id": "FR002",
+    "farmer_name": "Dnyaneshwar Chavan",
+    "mobile": "+91 9720009462",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "village": "Tasgaon Khurd",
+    "kisan_credit_card": "KCC-MH-SAN-10002",
+    "aadhaar_ref": "XXXX-XXXX-1146"
+  },
+  {
+    "farmer_id": "FR003",
+    "farmer_name": "Tukaram Gaikwad",
+    "mobile": "+91 9720014193",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "village": "Radhanagari Khurd",
+    "kisan_credit_card": "KCC-MH-KOL-10003",
+    "aadhaar_ref": "XXXX-XXXX-1219"
+  },
+  {
+    "farmer_id": "FR004",
+    "farmer_name": "Vitthal Wagh",
+    "mobile": "+91 9720018924",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "village": "Dindori Khurd",
+    "kisan_credit_card": "KCC-MH-NAS-10004",
+    "aadhaar_ref": "XXXX-XXXX-1292"
+  },
+  {
+    "farmer_id": "FR005",
+    "farmer_name": "Pandurang Salunkhe",
+    "mobile": "+91 9720023655",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "village": "Rahata Khurd",
+    "kisan_credit_card": "KCC-MH-AHM-10005",
+    "aadhaar_ref": "XXXX-XXXX-1365"
+  },
+  {
+    "farmer_id": "FR006",
+    "farmer_name": "Baburao Ghuge",
+    "mobile": "+91 9720028386",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "village": "Barshi Khurd",
+    "kisan_credit_card": "KCC-MH-SOL-10006",
+    "aadhaar_ref": "XXXX-XXXX-1438"
+  },
+  {
+    "farmer_id": "FR007",
+    "farmer_name": "Sunil Tambe",
+    "mobile": "+91 9720033117",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "village": "Vaijapur Khurd",
+    "kisan_credit_card": "KCC-MH-AUR-10007",
+    "aadhaar_ref": "XXXX-XXXX-1511"
+  },
+  {
+    "farmer_id": "FR008",
+    "farmer_name": "Santosh Patil",
+    "mobile": "+91 9720037848",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "village": "Jamner Khurd",
+    "kisan_credit_card": "KCC-MH-JAL-10008",
+    "aadhaar_ref": "XXXX-XXXX-1584"
+  },
+  {
+    "farmer_id": "FR009",
+    "farmer_name": "Sachin Jadhav",
+    "mobile": "+91 9720042579",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "village": "Sakri Khurd",
+    "kisan_credit_card": "KCC-MH-DHU-10009",
+    "aadhaar_ref": "XXXX-XXXX-1657"
+  },
+  {
+    "farmer_id": "FR010",
+    "farmer_name": "Ganesh Chavan",
+    "mobile": "+91 9720047310",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "village": "Taloda Khurd",
+    "kisan_credit_card": "KCC-MH-NAN-10010",
+    "aadhaar_ref": "XXXX-XXXX-1730"
+  },
+  {
+    "farmer_id": "FR011",
+    "farmer_name": "Nitin Gaikwad",
+    "mobile": "+91 9720052041",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "village": "Majalgaon Khurd",
+    "kisan_credit_card": "KCC-MH-BEE-10011",
+    "aadhaar_ref": "XXXX-XXXX-1803"
+  },
+  {
+    "farmer_id": "FR012",
+    "farmer_name": "Ananda Wagh",
+    "mobile": "+91 9720056772",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "village": "Udgir Khurd",
+    "kisan_credit_card": "KCC-MH-LAT-10012",
+    "aadhaar_ref": "XXXX-XXXX-1876"
+  },
+  {
+    "farmer_id": "FR013",
+    "farmer_name": "Bhimrao Salunkhe",
+    "mobile": "+91 9720061503",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "village": "Paranda Khurd",
+    "kisan_credit_card": "KCC-MH-OSM-10013",
+    "aadhaar_ref": "XXXX-XXXX-1949"
+  },
+  {
+    "farmer_id": "FR014",
+    "farmer_name": "Rajendra Ghuge",
+    "mobile": "+91 9720066234",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "village": "Hingna Khurd",
+    "kisan_credit_card": "KCC-MH-NAG-10014",
+    "aadhaar_ref": "XXXX-XXXX-2022"
+  },
+  {
+    "farmer_id": "FR015",
+    "farmer_name": "Shrikant Tambe",
+    "mobile": "+91 9720070965",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "village": "Achalpur Khurd",
+    "kisan_credit_card": "KCC-MH-AMR-10015",
+    "aadhaar_ref": "XXXX-XXXX-2095"
+  },
+  {
+    "farmer_id": "FR016",
+    "farmer_name": "Mahadev Patil",
+    "mobile": "+91 9720075696",
+    "district": "Akola",
+    "taluka": "Akot",
+    "village": "Akot Khurd",
+    "kisan_credit_card": "KCC-MH-AKO-10016",
+    "aadhaar_ref": "XXXX-XXXX-2168"
+  },
+  {
+    "farmer_id": "FR017",
+    "farmer_name": "Eknath Jadhav",
+    "mobile": "+91 9720080427",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "village": "Wani Khurd",
+    "kisan_credit_card": "KCC-MH-YAV-10017",
+    "aadhaar_ref": "XXXX-XXXX-2241"
+  },
+  {
+    "farmer_id": "FR018",
+    "farmer_name": "Dilip Chavan",
+    "mobile": "+91 9720085158",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "village": "Seloo Khurd",
+    "kisan_credit_card": "KCC-MH-WAR-10018",
+    "aadhaar_ref": "XXXX-XXXX-2314"
+  },
+  {
+    "farmer_id": "FR019",
+    "farmer_name": "Prakash Gaikwad",
+    "mobile": "+91 9720089889",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "village": "Jalgaon Jamod Khurd",
+    "kisan_credit_card": "KCC-MH-BUL-10019",
+    "aadhaar_ref": "XXXX-XXXX-2387"
+  },
+  {
+    "farmer_id": "FR020",
+    "farmer_name": "Arun Wagh",
+    "mobile": "+91 9720094620",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "village": "Baramati Khurd",
+    "kisan_credit_card": "KCC-MH-PUN-10020",
+    "aadhaar_ref": "XXXX-XXXX-2460"
+  },
+  {
+    "farmer_id": "FR021",
+    "farmer_name": "Balasaheb Salunkhe",
+    "mobile": "+91 9720099351",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "village": "Phaltan Khurd",
+    "kisan_credit_card": "KCC-MH-SAT-10021",
+    "aadhaar_ref": "XXXX-XXXX-2533"
+  },
+  {
+    "farmer_id": "FR022",
+    "farmer_name": "Shivaji Ghuge",
+    "mobile": "+91 9720104082",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "village": "Tasgaon Khurd",
+    "kisan_credit_card": "KCC-MH-SAN-10022",
+    "aadhaar_ref": "XXXX-XXXX-2606"
+  },
+  {
+    "farmer_id": "FR023",
+    "farmer_name": "Sudhakar Tambe",
+    "mobile": "+91 9720108813",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "village": "Radhanagari Khurd",
+    "kisan_credit_card": "KCC-MH-KOL-10023",
+    "aadhaar_ref": "XXXX-XXXX-2679"
+  },
+  {
+    "farmer_id": "FR024",
+    "farmer_name": "Sunita Patil",
+    "mobile": "+91 9720113544",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "village": "Dindori Khurd",
+    "kisan_credit_card": "KCC-MH-NAS-10024",
+    "aadhaar_ref": "XXXX-XXXX-2752"
+  },
+  {
+    "farmer_id": "FR025",
+    "farmer_name": "Savita Jadhav",
+    "mobile": "+91 9720118275",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "village": "Rahata Khurd",
+    "kisan_credit_card": "KCC-MH-AHM-10025",
+    "aadhaar_ref": "XXXX-XXXX-2825"
+  },
+  {
+    "farmer_id": "FR026",
+    "farmer_name": "Rekha Chavan",
+    "mobile": "+91 9720123006",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "village": "Barshi Khurd",
+    "kisan_credit_card": "KCC-MH-SOL-10026",
+    "aadhaar_ref": "XXXX-XXXX-2898"
+  },
+  {
+    "farmer_id": "FR027",
+    "farmer_name": "Shobha Gaikwad",
+    "mobile": "+91 9720127737",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "village": "Vaijapur Khurd",
+    "kisan_credit_card": "KCC-MH-AUR-10027",
+    "aadhaar_ref": "XXXX-XXXX-2971"
+  },
+  {
+    "farmer_id": "FR028",
+    "farmer_name": "Laxmibai Wagh",
+    "mobile": "+91 9720132468",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "village": "Jamner Khurd",
+    "kisan_credit_card": "KCC-MH-JAL-10028",
+    "aadhaar_ref": "XXXX-XXXX-3044"
+  },
+  {
+    "farmer_id": "FR029",
+    "farmer_name": "Parvatibai Salunkhe",
+    "mobile": "+91 9720137199",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "village": "Sakri Khurd",
+    "kisan_credit_card": "KCC-MH-DHU-10029",
+    "aadhaar_ref": "XXXX-XXXX-3117"
+  },
+  {
+    "farmer_id": "FR030",
+    "farmer_name": "Ramesh Ghuge",
+    "mobile": "+91 9720141930",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "village": "Taloda Khurd",
+    "kisan_credit_card": "KCC-MH-NAN-10030",
+    "aadhaar_ref": "XXXX-XXXX-3190"
+  },
+  {
+    "farmer_id": "FR031",
+    "farmer_name": "Suresh Tambe",
+    "mobile": "+91 9720146661",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "village": "Majalgaon Khurd",
+    "kisan_credit_card": "KCC-MH-BEE-10031",
+    "aadhaar_ref": "XXXX-XXXX-3263"
+  },
+  {
+    "farmer_id": "FR032",
+    "farmer_name": "Dnyaneshwar Patil",
+    "mobile": "+91 9720151392",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "village": "Udgir Khurd",
+    "kisan_credit_card": "KCC-MH-LAT-10032",
+    "aadhaar_ref": "XXXX-XXXX-3336"
+  },
+  {
+    "farmer_id": "FR033",
+    "farmer_name": "Tukaram Jadhav",
+    "mobile": "+91 9720156123",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "village": "Paranda Khurd",
+    "kisan_credit_card": "KCC-MH-OSM-10033",
+    "aadhaar_ref": "XXXX-XXXX-3409"
+  },
+  {
+    "farmer_id": "FR034",
+    "farmer_name": "Vitthal Chavan",
+    "mobile": "+91 9720160854",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "village": "Hingna Khurd",
+    "kisan_credit_card": "KCC-MH-NAG-10034",
+    "aadhaar_ref": "XXXX-XXXX-3482"
+  },
+  {
+    "farmer_id": "FR035",
+    "farmer_name": "Pandurang Gaikwad",
+    "mobile": "+91 9720165585",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "village": "Achalpur Khurd",
+    "kisan_credit_card": "KCC-MH-AMR-10035",
+    "aadhaar_ref": "XXXX-XXXX-3555"
+  },
+  {
+    "farmer_id": "FR036",
+    "farmer_name": "Baburao Wagh",
+    "mobile": "+91 9720170316",
+    "district": "Akola",
+    "taluka": "Akot",
+    "village": "Akot Khurd",
+    "kisan_credit_card": "KCC-MH-AKO-10036",
+    "aadhaar_ref": "XXXX-XXXX-3628"
+  },
+  {
+    "farmer_id": "FR037",
+    "farmer_name": "Sunil Salunkhe",
+    "mobile": "+91 9720175047",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "village": "Wani Khurd",
+    "kisan_credit_card": "KCC-MH-YAV-10037",
+    "aadhaar_ref": "XXXX-XXXX-3701"
+  },
+  {
+    "farmer_id": "FR038",
+    "farmer_name": "Santosh Ghuge",
+    "mobile": "+91 9720179778",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "village": "Seloo Khurd",
+    "kisan_credit_card": "KCC-MH-WAR-10038",
+    "aadhaar_ref": "XXXX-XXXX-3774"
+  },
+  {
+    "farmer_id": "FR039",
+    "farmer_name": "Sachin Tambe",
+    "mobile": "+91 9720184509",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "village": "Jalgaon Jamod Khurd",
+    "kisan_credit_card": "KCC-MH-BUL-10039",
+    "aadhaar_ref": "XXXX-XXXX-3847"
+  },
+  {
+    "farmer_id": "FR040",
+    "farmer_name": "Ganesh Patil",
+    "mobile": "+91 9720189240",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "village": "Baramati Khurd",
+    "kisan_credit_card": "KCC-MH-PUN-10040",
+    "aadhaar_ref": "XXXX-XXXX-3920"
+  },
+  {
+    "farmer_id": "FR041",
+    "farmer_name": "Nitin Jadhav",
+    "mobile": "+91 9720193971",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "village": "Phaltan Khurd",
+    "kisan_credit_card": "KCC-MH-SAT-10041",
+    "aadhaar_ref": "XXXX-XXXX-3993"
+  },
+  {
+    "farmer_id": "FR042",
+    "farmer_name": "Ananda Chavan",
+    "mobile": "+91 9720198702",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "village": "Tasgaon Khurd",
+    "kisan_credit_card": "KCC-MH-SAN-10042",
+    "aadhaar_ref": "XXXX-XXXX-4066"
+  },
+  {
+    "farmer_id": "FR043",
+    "farmer_name": "Bhimrao Gaikwad",
+    "mobile": "+91 9720203433",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "village": "Radhanagari Khurd",
+    "kisan_credit_card": "KCC-MH-KOL-10043",
+    "aadhaar_ref": "XXXX-XXXX-4139"
+  },
+  {
+    "farmer_id": "FR044",
+    "farmer_name": "Rajendra Wagh",
+    "mobile": "+91 9720208164",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "village": "Dindori Khurd",
+    "kisan_credit_card": "KCC-MH-NAS-10044",
+    "aadhaar_ref": "XXXX-XXXX-4212"
+  },
+  {
+    "farmer_id": "FR045",
+    "farmer_name": "Shrikant Salunkhe",
+    "mobile": "+91 9720212895",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "village": "Rahata Khurd",
+    "kisan_credit_card": "KCC-MH-AHM-10045",
+    "aadhaar_ref": "XXXX-XXXX-4285"
+  },
+  {
+    "farmer_id": "FR046",
+    "farmer_name": "Mahadev Ghuge",
+    "mobile": "+91 9720217626",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "village": "Barshi Khurd",
+    "kisan_credit_card": "KCC-MH-SOL-10046",
+    "aadhaar_ref": "XXXX-XXXX-4358"
+  },
+  {
+    "farmer_id": "FR047",
+    "farmer_name": "Eknath Tambe",
+    "mobile": "+91 9720222357",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "village": "Vaijapur Khurd",
+    "kisan_credit_card": "KCC-MH-AUR-10047",
+    "aadhaar_ref": "XXXX-XXXX-4431"
+  },
+  {
+    "farmer_id": "FR048",
+    "farmer_name": "Dilip Patil",
+    "mobile": "+91 9720227088",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "village": "Jamner Khurd",
+    "kisan_credit_card": "KCC-MH-JAL-10048",
+    "aadhaar_ref": "XXXX-XXXX-4504"
+  },
+  {
+    "farmer_id": "FR049",
+    "farmer_name": "Prakash Jadhav",
+    "mobile": "+91 9720231819",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "village": "Sakri Khurd",
+    "kisan_credit_card": "KCC-MH-DHU-10049",
+    "aadhaar_ref": "XXXX-XXXX-4577"
+  },
+  {
+    "farmer_id": "FR050",
+    "farmer_name": "Arun Chavan",
+    "mobile": "+91 9720236550",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "village": "Taloda Khurd",
+    "kisan_credit_card": "KCC-MH-NAN-10050",
+    "aadhaar_ref": "XXXX-XXXX-4650"
+  },
+  {
+    "farmer_id": "FR051",
+    "farmer_name": "Balasaheb Gaikwad",
+    "mobile": "+91 9720241281",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "village": "Majalgaon Khurd",
+    "kisan_credit_card": "KCC-MH-BEE-10051",
+    "aadhaar_ref": "XXXX-XXXX-4723"
+  },
+  {
+    "farmer_id": "FR052",
+    "farmer_name": "Shivaji Wagh",
+    "mobile": "+91 9720246012",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "village": "Udgir Khurd",
+    "kisan_credit_card": "KCC-MH-LAT-10052",
+    "aadhaar_ref": "XXXX-XXXX-4796"
+  },
+  {
+    "farmer_id": "FR053",
+    "farmer_name": "Sudhakar Salunkhe",
+    "mobile": "+91 9720250743",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "village": "Paranda Khurd",
+    "kisan_credit_card": "KCC-MH-OSM-10053",
+    "aadhaar_ref": "XXXX-XXXX-4869"
+  },
+  {
+    "farmer_id": "FR054",
+    "farmer_name": "Sunita Ghuge",
+    "mobile": "+91 9720255474",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "village": "Hingna Khurd",
+    "kisan_credit_card": "KCC-MH-NAG-10054",
+    "aadhaar_ref": "XXXX-XXXX-4942"
+  },
+  {
+    "farmer_id": "FR055",
+    "farmer_name": "Savita Tambe",
+    "mobile": "+91 9720260205",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "village": "Achalpur Khurd",
+    "kisan_credit_card": "KCC-MH-AMR-10055",
+    "aadhaar_ref": "XXXX-XXXX-5015"
+  },
+  {
+    "farmer_id": "FR056",
+    "farmer_name": "Rekha Patil",
+    "mobile": "+91 9720264936",
+    "district": "Akola",
+    "taluka": "Akot",
+    "village": "Akot Khurd",
+    "kisan_credit_card": "KCC-MH-AKO-10056",
+    "aadhaar_ref": "XXXX-XXXX-5088"
+  },
+  {
+    "farmer_id": "FR057",
+    "farmer_name": "Shobha Jadhav",
+    "mobile": "+91 9720269667",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "village": "Wani Khurd",
+    "kisan_credit_card": "KCC-MH-YAV-10057",
+    "aadhaar_ref": "XXXX-XXXX-5161"
+  },
+  {
+    "farmer_id": "FR058",
+    "farmer_name": "Laxmibai Chavan",
+    "mobile": "+91 9720274398",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "village": "Seloo Khurd",
+    "kisan_credit_card": "KCC-MH-WAR-10058",
+    "aadhaar_ref": "XXXX-XXXX-5234"
+  },
+  {
+    "farmer_id": "FR059",
+    "farmer_name": "Parvatibai Gaikwad",
+    "mobile": "+91 9720279129",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "village": "Jalgaon Jamod Khurd",
+    "kisan_credit_card": "KCC-MH-BUL-10059",
+    "aadhaar_ref": "XXXX-XXXX-5307"
+  },
+  {
+    "farmer_id": "FR060",
+    "farmer_name": "Ramesh Wagh",
+    "mobile": "+91 9720283860",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "village": "Baramati Khurd",
+    "kisan_credit_card": "KCC-MH-PUN-10060",
+    "aadhaar_ref": "XXXX-XXXX-5380"
+  },
+  {
+    "farmer_id": "FR061",
+    "farmer_name": "Suresh Salunkhe",
+    "mobile": "+91 9720288591",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "village": "Phaltan Khurd",
+    "kisan_credit_card": "KCC-MH-SAT-10061",
+    "aadhaar_ref": "XXXX-XXXX-5453"
+  },
+  {
+    "farmer_id": "FR062",
+    "farmer_name": "Dnyaneshwar Ghuge",
+    "mobile": "+91 9720293322",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "village": "Tasgaon Khurd",
+    "kisan_credit_card": "KCC-MH-SAN-10062",
+    "aadhaar_ref": "XXXX-XXXX-5526"
+  },
+  {
+    "farmer_id": "FR063",
+    "farmer_name": "Tukaram Tambe",
+    "mobile": "+91 9720298053",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "village": "Radhanagari Khurd",
+    "kisan_credit_card": "KCC-MH-KOL-10063",
+    "aadhaar_ref": "XXXX-XXXX-5599"
+  },
+  {
+    "farmer_id": "FR064",
+    "farmer_name": "Vitthal Patil",
+    "mobile": "+91 9720302784",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "village": "Dindori Khurd",
+    "kisan_credit_card": "KCC-MH-NAS-10064",
+    "aadhaar_ref": "XXXX-XXXX-5672"
+  },
+  {
+    "farmer_id": "FR065",
+    "farmer_name": "Pandurang Jadhav",
+    "mobile": "+91 9720307515",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "village": "Rahata Khurd",
+    "kisan_credit_card": "KCC-MH-AHM-10065",
+    "aadhaar_ref": "XXXX-XXXX-5745"
+  },
+  {
+    "farmer_id": "FR066",
+    "farmer_name": "Baburao Chavan",
+    "mobile": "+91 9720312246",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "village": "Barshi Khurd",
+    "kisan_credit_card": "KCC-MH-SOL-10066",
+    "aadhaar_ref": "XXXX-XXXX-5818"
+  },
+  {
+    "farmer_id": "FR067",
+    "farmer_name": "Sunil Gaikwad",
+    "mobile": "+91 9720316977",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "village": "Vaijapur Khurd",
+    "kisan_credit_card": "KCC-MH-AUR-10067",
+    "aadhaar_ref": "XXXX-XXXX-5891"
+  },
+  {
+    "farmer_id": "FR068",
+    "farmer_name": "Santosh Wagh",
+    "mobile": "+91 9720321708",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "village": "Jamner Khurd",
+    "kisan_credit_card": "KCC-MH-JAL-10068",
+    "aadhaar_ref": "XXXX-XXXX-5964"
+  },
+  {
+    "farmer_id": "FR069",
+    "farmer_name": "Sachin Salunkhe",
+    "mobile": "+91 9720326439",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "village": "Sakri Khurd",
+    "kisan_credit_card": "KCC-MH-DHU-10069",
+    "aadhaar_ref": "XXXX-XXXX-6037"
+  },
+  {
+    "farmer_id": "FR070",
+    "farmer_name": "Ganesh Ghuge",
+    "mobile": "+91 9720331170",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "village": "Taloda Khurd",
+    "kisan_credit_card": "KCC-MH-NAN-10070",
+    "aadhaar_ref": "XXXX-XXXX-6110"
+  },
+  {
+    "farmer_id": "FR071",
+    "farmer_name": "Nitin Tambe",
+    "mobile": "+91 9720335901",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "village": "Majalgaon Khurd",
+    "kisan_credit_card": "KCC-MH-BEE-10071",
+    "aadhaar_ref": "XXXX-XXXX-6183"
+  },
+  {
+    "farmer_id": "FR072",
+    "farmer_name": "Ananda Patil",
+    "mobile": "+91 9720340632",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "village": "Udgir Khurd",
+    "kisan_credit_card": "KCC-MH-LAT-10072",
+    "aadhaar_ref": "XXXX-XXXX-6256"
+  },
+  {
+    "farmer_id": "FR073",
+    "farmer_name": "Bhimrao Jadhav",
+    "mobile": "+91 9720345363",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "village": "Paranda Khurd",
+    "kisan_credit_card": "KCC-MH-OSM-10073",
+    "aadhaar_ref": "XXXX-XXXX-6329"
+  },
+  {
+    "farmer_id": "FR074",
+    "farmer_name": "Rajendra Chavan",
+    "mobile": "+91 9720350094",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "village": "Hingna Khurd",
+    "kisan_credit_card": "KCC-MH-NAG-10074",
+    "aadhaar_ref": "XXXX-XXXX-6402"
+  },
+  {
+    "farmer_id": "FR075",
+    "farmer_name": "Shrikant Gaikwad",
+    "mobile": "+91 9720354825",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "village": "Achalpur Khurd",
+    "kisan_credit_card": "KCC-MH-AMR-10075",
+    "aadhaar_ref": "XXXX-XXXX-6475"
+  },
+  {
+    "farmer_id": "FR076",
+    "farmer_name": "Mahadev Wagh",
+    "mobile": "+91 9720359556",
+    "district": "Akola",
+    "taluka": "Akot",
+    "village": "Akot Khurd",
+    "kisan_credit_card": "KCC-MH-AKO-10076",
+    "aadhaar_ref": "XXXX-XXXX-6548"
+  },
+  {
+    "farmer_id": "FR077",
+    "farmer_name": "Eknath Salunkhe",
+    "mobile": "+91 9720364287",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "village": "Wani Khurd",
+    "kisan_credit_card": "KCC-MH-YAV-10077",
+    "aadhaar_ref": "XXXX-XXXX-6621"
+  },
+  {
+    "farmer_id": "FR078",
+    "farmer_name": "Dilip Ghuge",
+    "mobile": "+91 9720369018",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "village": "Seloo Khurd",
+    "kisan_credit_card": "KCC-MH-WAR-10078",
+    "aadhaar_ref": "XXXX-XXXX-6694"
+  },
+  {
+    "farmer_id": "FR079",
+    "farmer_name": "Prakash Tambe",
+    "mobile": "+91 9720373749",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "village": "Jalgaon Jamod Khurd",
+    "kisan_credit_card": "KCC-MH-BUL-10079",
+    "aadhaar_ref": "XXXX-XXXX-6767"
+  },
+  {
+    "farmer_id": "FR080",
+    "farmer_name": "Arun Patil",
+    "mobile": "+91 9720378480",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "village": "Baramati Khurd",
+    "kisan_credit_card": "KCC-MH-PUN-10080",
+    "aadhaar_ref": "XXXX-XXXX-6840"
+  },
+  {
+    "farmer_id": "FR081",
+    "farmer_name": "Balasaheb Jadhav",
+    "mobile": "+91 9720383211",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "village": "Phaltan Khurd",
+    "kisan_credit_card": "KCC-MH-SAT-10081",
+    "aadhaar_ref": "XXXX-XXXX-6913"
+  },
+  {
+    "farmer_id": "FR082",
+    "farmer_name": "Shivaji Chavan",
+    "mobile": "+91 9720387942",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "village": "Tasgaon Khurd",
+    "kisan_credit_card": "KCC-MH-SAN-10082",
+    "aadhaar_ref": "XXXX-XXXX-6986"
+  },
+  {
+    "farmer_id": "FR083",
+    "farmer_name": "Sudhakar Gaikwad",
+    "mobile": "+91 9720392673",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "village": "Radhanagari Khurd",
+    "kisan_credit_card": "KCC-MH-KOL-10083",
+    "aadhaar_ref": "XXXX-XXXX-7059"
+  },
+  {
+    "farmer_id": "FR084",
+    "farmer_name": "Sunita Wagh",
+    "mobile": "+91 9720397404",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "village": "Dindori Khurd",
+    "kisan_credit_card": "KCC-MH-NAS-10084",
+    "aadhaar_ref": "XXXX-XXXX-7132"
+  },
+  {
+    "farmer_id": "FR085",
+    "farmer_name": "Savita Salunkhe",
+    "mobile": "+91 9720402135",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "village": "Rahata Khurd",
+    "kisan_credit_card": "KCC-MH-AHM-10085",
+    "aadhaar_ref": "XXXX-XXXX-7205"
+  },
+  {
+    "farmer_id": "FR086",
+    "farmer_name": "Rekha Ghuge",
+    "mobile": "+91 9720406866",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "village": "Barshi Khurd",
+    "kisan_credit_card": "KCC-MH-SOL-10086",
+    "aadhaar_ref": "XXXX-XXXX-7278"
+  },
+  {
+    "farmer_id": "FR087",
+    "farmer_name": "Shobha Tambe",
+    "mobile": "+91 9720411597",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "village": "Vaijapur Khurd",
+    "kisan_credit_card": "KCC-MH-AUR-10087",
+    "aadhaar_ref": "XXXX-XXXX-7351"
+  },
+  {
+    "farmer_id": "FR088",
+    "farmer_name": "Laxmibai Patil",
+    "mobile": "+91 9720416328",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "village": "Jamner Khurd",
+    "kisan_credit_card": "KCC-MH-JAL-10088",
+    "aadhaar_ref": "XXXX-XXXX-7424"
+  },
+  {
+    "farmer_id": "FR089",
+    "farmer_name": "Parvatibai Jadhav",
+    "mobile": "+91 9720421059",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "village": "Sakri Khurd",
+    "kisan_credit_card": "KCC-MH-DHU-10089",
+    "aadhaar_ref": "XXXX-XXXX-7497"
+  },
+  {
+    "farmer_id": "FR090",
+    "farmer_name": "Ramesh Chavan",
+    "mobile": "+91 9720425790",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "village": "Taloda Khurd",
+    "kisan_credit_card": "KCC-MH-NAN-10090",
+    "aadhaar_ref": "XXXX-XXXX-7570"
+  },
+  {
+    "farmer_id": "FR091",
+    "farmer_name": "Suresh Gaikwad",
+    "mobile": "+91 9720430521",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "village": "Majalgaon Khurd",
+    "kisan_credit_card": "KCC-MH-BEE-10091",
+    "aadhaar_ref": "XXXX-XXXX-7643"
+  },
+  {
+    "farmer_id": "FR092",
+    "farmer_name": "Dnyaneshwar Wagh",
+    "mobile": "+91 9720435252",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "village": "Udgir Khurd",
+    "kisan_credit_card": "KCC-MH-LAT-10092",
+    "aadhaar_ref": "XXXX-XXXX-7716"
+  },
+  {
+    "farmer_id": "FR093",
+    "farmer_name": "Tukaram Salunkhe",
+    "mobile": "+91 9720439983",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "village": "Paranda Khurd",
+    "kisan_credit_card": "KCC-MH-OSM-10093",
+    "aadhaar_ref": "XXXX-XXXX-7789"
+  },
+  {
+    "farmer_id": "FR094",
+    "farmer_name": "Vitthal Ghuge",
+    "mobile": "+91 9720444714",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "village": "Hingna Khurd",
+    "kisan_credit_card": "KCC-MH-NAG-10094",
+    "aadhaar_ref": "XXXX-XXXX-7862"
+  },
+  {
+    "farmer_id": "FR095",
+    "farmer_name": "Pandurang Tambe",
+    "mobile": "+91 9720449445",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "village": "Achalpur Khurd",
+    "kisan_credit_card": "KCC-MH-AMR-10095",
+    "aadhaar_ref": "XXXX-XXXX-7935"
+  },
+  {
+    "farmer_id": "FR096",
+    "farmer_name": "Baburao Patil",
+    "mobile": "+91 9720454176",
+    "district": "Akola",
+    "taluka": "Akot",
+    "village": "Akot Khurd",
+    "kisan_credit_card": "KCC-MH-AKO-10096",
+    "aadhaar_ref": "XXXX-XXXX-8008"
+  },
+  {
+    "farmer_id": "FR097",
+    "farmer_name": "Sunil Jadhav",
+    "mobile": "+91 9720458907",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "village": "Wani Khurd",
+    "kisan_credit_card": "KCC-MH-YAV-10097",
+    "aadhaar_ref": "XXXX-XXXX-8081"
+  },
+  {
+    "farmer_id": "FR098",
+    "farmer_name": "Santosh Chavan",
+    "mobile": "+91 9720463638",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "village": "Seloo Khurd",
+    "kisan_credit_card": "KCC-MH-WAR-10098",
+    "aadhaar_ref": "XXXX-XXXX-8154"
+  },
+  {
+    "farmer_id": "FR099",
+    "farmer_name": "Sachin Gaikwad",
+    "mobile": "+91 9720468369",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "village": "Jalgaon Jamod Khurd",
+    "kisan_credit_card": "KCC-MH-BUL-10099",
+    "aadhaar_ref": "XXXX-XXXX-8227"
+  },
+  {
+    "farmer_id": "FR100",
+    "farmer_name": "Ganesh Wagh",
+    "mobile": "+91 9720473100",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "village": "Baramati Khurd",
+    "kisan_credit_card": "KCC-MH-PUN-10100",
+    "aadhaar_ref": "XXXX-XXXX-8300"
+  },
+  {
+    "farmer_id": "FR101",
+    "farmer_name": "Nitin Salunkhe",
+    "mobile": "+91 9720477831",
+    "district": "Satara",
+    "taluka": "Phaltan",
+    "village": "Phaltan Khurd",
+    "kisan_credit_card": "KCC-MH-SAT-10101",
+    "aadhaar_ref": "XXXX-XXXX-8373"
+  },
+  {
+    "farmer_id": "FR102",
+    "farmer_name": "Ananda Ghuge",
+    "mobile": "+91 9720482562",
+    "district": "Sangli",
+    "taluka": "Tasgaon",
+    "village": "Tasgaon Khurd",
+    "kisan_credit_card": "KCC-MH-SAN-10102",
+    "aadhaar_ref": "XXXX-XXXX-8446"
+  },
+  {
+    "farmer_id": "FR103",
+    "farmer_name": "Bhimrao Tambe",
+    "mobile": "+91 9720487293",
+    "district": "Kolhapur",
+    "taluka": "Radhanagari",
+    "village": "Radhanagari Khurd",
+    "kisan_credit_card": "KCC-MH-KOL-10103",
+    "aadhaar_ref": "XXXX-XXXX-8519"
+  },
+  {
+    "farmer_id": "FR104",
+    "farmer_name": "Rajendra Patil",
+    "mobile": "+91 9720492024",
+    "district": "Nashik",
+    "taluka": "Dindori",
+    "village": "Dindori Khurd",
+    "kisan_credit_card": "KCC-MH-NAS-10104",
+    "aadhaar_ref": "XXXX-XXXX-8592"
+  },
+  {
+    "farmer_id": "FR105",
+    "farmer_name": "Shrikant Jadhav",
+    "mobile": "+91 9720496755",
+    "district": "Ahmednagar",
+    "taluka": "Rahata",
+    "village": "Rahata Khurd",
+    "kisan_credit_card": "KCC-MH-AHM-10105",
+    "aadhaar_ref": "XXXX-XXXX-8665"
+  },
+  {
+    "farmer_id": "FR106",
+    "farmer_name": "Mahadev Chavan",
+    "mobile": "+91 9720501486",
+    "district": "Solapur",
+    "taluka": "Barshi",
+    "village": "Barshi Khurd",
+    "kisan_credit_card": "KCC-MH-SOL-10106",
+    "aadhaar_ref": "XXXX-XXXX-8738"
+  },
+  {
+    "farmer_id": "FR107",
+    "farmer_name": "Eknath Gaikwad",
+    "mobile": "+91 9720506217",
+    "district": "Aurangabad",
+    "taluka": "Vaijapur",
+    "village": "Vaijapur Khurd",
+    "kisan_credit_card": "KCC-MH-AUR-10107",
+    "aadhaar_ref": "XXXX-XXXX-8811"
+  },
+  {
+    "farmer_id": "FR108",
+    "farmer_name": "Dilip Wagh",
+    "mobile": "+91 9720510948",
+    "district": "Jalgaon",
+    "taluka": "Jamner",
+    "village": "Jamner Khurd",
+    "kisan_credit_card": "KCC-MH-JAL-10108",
+    "aadhaar_ref": "XXXX-XXXX-8884"
+  },
+  {
+    "farmer_id": "FR109",
+    "farmer_name": "Prakash Salunkhe",
+    "mobile": "+91 9720515679",
+    "district": "Dhule",
+    "taluka": "Sakri",
+    "village": "Sakri Khurd",
+    "kisan_credit_card": "KCC-MH-DHU-10109",
+    "aadhaar_ref": "XXXX-XXXX-8957"
+  },
+  {
+    "farmer_id": "FR110",
+    "farmer_name": "Arun Ghuge",
+    "mobile": "+91 9720520410",
+    "district": "Nandurbar",
+    "taluka": "Taloda",
+    "village": "Taloda Khurd",
+    "kisan_credit_card": "KCC-MH-NAN-10110",
+    "aadhaar_ref": "XXXX-XXXX-9030"
+  },
+  {
+    "farmer_id": "FR111",
+    "farmer_name": "Balasaheb Tambe",
+    "mobile": "+91 9720525141",
+    "district": "Beed",
+    "taluka": "Majalgaon",
+    "village": "Majalgaon Khurd",
+    "kisan_credit_card": "KCC-MH-BEE-10111",
+    "aadhaar_ref": "XXXX-XXXX-9103"
+  },
+  {
+    "farmer_id": "FR112",
+    "farmer_name": "Shivaji Patil",
+    "mobile": "+91 9720529872",
+    "district": "Latur",
+    "taluka": "Udgir",
+    "village": "Udgir Khurd",
+    "kisan_credit_card": "KCC-MH-LAT-10112",
+    "aadhaar_ref": "XXXX-XXXX-9176"
+  },
+  {
+    "farmer_id": "FR113",
+    "farmer_name": "Sudhakar Jadhav",
+    "mobile": "+91 9720534603",
+    "district": "Osmanabad",
+    "taluka": "Paranda",
+    "village": "Paranda Khurd",
+    "kisan_credit_card": "KCC-MH-OSM-10113",
+    "aadhaar_ref": "XXXX-XXXX-9249"
+  },
+  {
+    "farmer_id": "FR114",
+    "farmer_name": "Sunita Chavan",
+    "mobile": "+91 9720539334",
+    "district": "Nagpur",
+    "taluka": "Hingna",
+    "village": "Hingna Khurd",
+    "kisan_credit_card": "KCC-MH-NAG-10114",
+    "aadhaar_ref": "XXXX-XXXX-9322"
+  },
+  {
+    "farmer_id": "FR115",
+    "farmer_name": "Savita Gaikwad",
+    "mobile": "+91 9720544065",
+    "district": "Amravati",
+    "taluka": "Achalpur",
+    "village": "Achalpur Khurd",
+    "kisan_credit_card": "KCC-MH-AMR-10115",
+    "aadhaar_ref": "XXXX-XXXX-9395"
+  },
+  {
+    "farmer_id": "FR116",
+    "farmer_name": "Rekha Wagh",
+    "mobile": "+91 9720548796",
+    "district": "Akola",
+    "taluka": "Akot",
+    "village": "Akot Khurd",
+    "kisan_credit_card": "KCC-MH-AKO-10116",
+    "aadhaar_ref": "XXXX-XXXX-9468"
+  },
+  {
+    "farmer_id": "FR117",
+    "farmer_name": "Shobha Salunkhe",
+    "mobile": "+91 9720553527",
+    "district": "Yavatmal",
+    "taluka": "Wani",
+    "village": "Wani Khurd",
+    "kisan_credit_card": "KCC-MH-YAV-10117",
+    "aadhaar_ref": "XXXX-XXXX-9541"
+  },
+  {
+    "farmer_id": "FR118",
+    "farmer_name": "Laxmibai Ghuge",
+    "mobile": "+91 9720558258",
+    "district": "Wardha",
+    "taluka": "Seloo",
+    "village": "Seloo Khurd",
+    "kisan_credit_card": "KCC-MH-WAR-10118",
+    "aadhaar_ref": "XXXX-XXXX-9614"
+  },
+  {
+    "farmer_id": "FR119",
+    "farmer_name": "Parvatibai Tambe",
+    "mobile": "+91 9720562989",
+    "district": "Buldhana",
+    "taluka": "Jalgaon Jamod",
+    "village": "Jalgaon Jamod Khurd",
+    "kisan_credit_card": "KCC-MH-BUL-10119",
+    "aadhaar_ref": "XXXX-XXXX-9687"
+  },
+  {
+    "farmer_id": "FR120",
+    "farmer_name": "Ramesh Patil",
+    "mobile": "+91 9720567720",
+    "district": "Pune",
+    "taluka": "Baramati",
+    "village": "Baramati Khurd",
+    "kisan_credit_card": "KCC-MH-PUN-10120",
+    "aadhaar_ref": "XXXX-XXXX-9760"
+  }
+]

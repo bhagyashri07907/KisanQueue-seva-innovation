@@ -1,0 +1,12 @@
+[
+  {
+    "admin_id": "ADM001",
+    "username": "admin",
+    "password_hash": "$2b$10$MKXyE.VI9M.do8foT7HB7efo05CSWpbQXayMN4XiNT/YG.Mkq4BOC",
+    "full_name": "Dr. Vikramaditya Salve (State Director)",
+    "email": "admin@kisanqueue.gov.in",
+    "department": "Department of Agricultural Marketing, Govt. of Maharashtra",
+    "role": "admin",
+    "status": "active"
+  }
+]

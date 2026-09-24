@@ -1,0 +1,6 @@
+{
+  "name": "KisanQueue",
+  "description": "Farmer-side digital agricultural procurement slot-booking application for booking procurement slots, receiving digital tokens, and tracking procurement and payment status.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

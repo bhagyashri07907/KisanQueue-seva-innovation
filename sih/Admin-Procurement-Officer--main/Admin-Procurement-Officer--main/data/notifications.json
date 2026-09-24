@@ -1,0 +1,72 @@
+[
+  {
+    "id": "NOTIF-2026-00101",
+    "type": "RECEIPT_GENERATED",
+    "channel": "BOTH",
+    "recipient_name": "Suresh Jadhav",
+    "recipient_mobile": "+91 9720004731",
+    "farmer_id": "FR001",
+    "digital_token": "KQ-2026-00101",
+    "title": "Procurement Receipt Generated",
+    "message": "KisanQueue: Dear Suresh Jadhav, your 15 Quintals of Soybean has been procured at Govt Procurement Center Baramati. Receipt #REC-2026-00001. Amount ₹73,380 sent for DBT processing.",
+    "status": "DELIVERED",
+    "carrier_ref": "SMS-AIRTEL-98219401",
+    "created_at": "2026-09-07T10:15:00Z"
+  },
+  {
+    "id": "NOTIF-2026-00102",
+    "type": "DBT_INITIATED",
+    "channel": "SMS",
+    "recipient_name": "Suresh Jadhav",
+    "recipient_mobile": "+91 9720004731",
+    "farmer_id": "FR001",
+    "digital_token": "KQ-2026-00101",
+    "title": "DBT Payment Disbursed",
+    "message": "KisanQueue DBT: Payment of ₹73,380 for Receipt #REC-2026-00001 credited to your bank account via PFMS Ref PFMS928172619. Status: Processing.",
+    "status": "DELIVERED",
+    "carrier_ref": "SMS-JIO-54129841",
+    "created_at": "2026-09-07T10:30:00Z"
+  },
+  {
+    "id": "NOTIF-2026-00103",
+    "type": "ARRIVAL_ACK",
+    "channel": "FCM_PUSH",
+    "recipient_name": "Dnyaneshwar Chavan",
+    "recipient_mobile": "+91 9720009462",
+    "farmer_id": "FR002",
+    "digital_token": "KQ-2026-00102",
+    "title": "Token Verified at Gate",
+    "message": "KisanQueue: Token KQ-2026-00102 verified by Procurement Officer. Please proceed to Weighbridge Station 1.",
+    "status": "DELIVERED",
+    "carrier_ref": "FCM-TOKEN-091249-ACK",
+    "created_at": "2026-09-07T09:45:00Z"
+  },
+  {
+    "id": "NOTIF-2026-00104",
+    "type": "BOOKING_CONFIRMED",
+    "channel": "BOTH",
+    "recipient_name": "Tukaram Gaikwad",
+    "recipient_mobile": "+91 9720014193",
+    "farmer_id": "FR003",
+    "digital_token": "KQ-2026-00103",
+    "title": "Slot Booking Confirmed",
+    "message": "KisanQueue: Booking confirmed for Gram (Chana) (22 Quintals) on 2026-09-07 (09:00 AM - 11:00 AM) at Baramati Center. Your Token: KQ-2026-00103.",
+    "status": "DELIVERED",
+    "carrier_ref": "SMS-BSNL-49120912",
+    "created_at": "2026-09-06T18:20:00Z"
+  },
+  {
+    "id": "NOTIF-2026-00105",
+    "type": "QUALITY_WEIGHED",
+    "channel": "FCM_PUSH",
+    "recipient_name": "Pandurang Shinde",
+    "recipient_mobile": "+91 9720018924",
+    "farmer_id": "FR004",
+    "digital_token": "KQ-2026-00104",
+    "title": "Quality & Weighing Approved",
+    "message": "KisanQueue: Net weight 18.5 Q recorded. Moisture 10.2% - Quality Grade: PASSED. Official receipt generated.",
+    "status": "DELIVERED",
+    "carrier_ref": "FCM-TOKEN-482194-ACK",
+    "created_at": "2026-09-07T11:05:00Z"
+  }
+]

@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@layer base {
+  button, 
+  [role="button"], 
+  input, 
+  select {
+    /* Minimum touch target size for mobile accessibility */
+    min-height: 44px;
+  }
+}
+
+/* High Contrast Mode Toggle Structure */
+:root {
+  --app-contrast: 1;
+}
+
+:root.high-contrast {
+  --app-contrast: 1.25;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --app-contrast: 1.25;
+  }
+}
+
+body {
+  filter: contrast(var(--app-contrast));
+}
