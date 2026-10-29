@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { IndianRupee, Clock, CheckCircle2, AlertCircle, ArrowUpRight } from 'lucide-react';
 import { Booking } from '../types';
+import { translateBookingStatus } from '../i18n/status';
 
 interface PaymentCardProps {
   booking: Booking;
@@ -57,7 +58,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({ booking }) => {
       {/* Top Header */}
       <div className="flex items-center justify-between pb-4 border-b border-slate-100">
         <div>
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Booking ID: {booking.id}</span>
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('bookingId')}: {booking.id}</span>
           <h3 className="text-base font-bold text-slate-800 mt-0.5">{booking.cropName}</h3>
         </div>
         {getStatusBadge()}
@@ -67,7 +68,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({ booking }) => {
       <div className="grid grid-cols-2 gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
         <div>
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('procurementStatusTitle')}</span>
-          <span className="text-sm font-bold text-emerald-800 mt-0.5 block">{booking.status}</span>
+          <span className="text-sm font-bold text-emerald-800 mt-0.5 block">{translateBookingStatus(booking.status, t)}</span>
         </div>
         <div>
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('expectedQuantity')}</span>
@@ -92,7 +93,7 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({ booking }) => {
         </div>
         {booking.paymentStatus === 'Completed' && (
           <span className="text-[10px] font-bold text-emerald-800 bg-white px-2.5 py-1 rounded-md border border-emerald-200 uppercase tracking-wider">
-            DBT Credited
+            {t('dbtCredited')}
           </span>
         )}
       </div>
@@ -108,14 +109,14 @@ export const PaymentCard: React.FC<PaymentCardProps> = ({ booking }) => {
         )}
         {booking.paymentDate && (
           <div className="flex items-center justify-between text-[11px] text-slate-500">
-            <span>Credit Date:</span>
+            <span>{t('emailCreditDate')}</span>
             <span className="font-medium text-slate-700">{booking.paymentDate}</span>
           </div>
         )}
       </div>
 
       <div className="text-xs text-slate-400 flex items-center gap-1.5 pt-1">
-        <span className="font-bold uppercase text-[10px] tracking-wider">Center:</span>
+        <span className="font-bold uppercase text-[10px] tracking-wider">{t('centerLabel')}</span>
         <span className="font-medium text-slate-700 truncate">{booking.centerName}</span>
       </div>
     </div>

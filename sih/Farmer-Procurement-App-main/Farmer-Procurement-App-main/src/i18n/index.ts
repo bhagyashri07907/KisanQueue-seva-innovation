@@ -1,17 +1,26 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import HttpBackend from 'i18next-http-backend';
+import en from '../../public/locales/en/translation.json';
+import hi from '../../public/locales/hi/translation.json';
+import mr from '../../public/locales/mr/translation.json';
 
-const savedLang = typeof window !== 'undefined' ? localStorage.getItem('kq_language') || 'en' : 'en';
+const supportedLanguages = ['en', 'hi', 'mr'] as const;
+const storedLanguage = typeof window !== 'undefined' ? localStorage.getItem('kq_language') : null;
+const savedLang = storedLanguage && supportedLanguages.includes(storedLanguage as (typeof supportedLanguages)[number])
+  ? storedLanguage
+  : 'en';
 
 i18n
-  .use(HttpBackend)
   .use(initReactI18next)
   .init({
     lng: savedLang,
     fallbackLng: 'en',
-    backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+    supportedLngs: [...supportedLanguages],
+    load: 'languageOnly',
+    resources: {
+      en: { translation: en },
+      hi: { translation: hi },
+      mr: { translation: mr },
     },
     interpolation: {
       escapeValue: false,

@@ -1,17 +1,10 @@
 """
-KisanQueue Web Portal - MongoDB Seed Script
-This script seeds the synthetic government-provided dataset into MongoDB collections.
+[REFERENCE ONLY / PROTOTYPE SCRIPT]
+Note: The active and verified backend seed script for KisanQueue is located at:
+KisanQueue_backend_starter/KisanQueue_backend/seed.py
 
-Collections:
-- admins
-- officers
-- procurement_centers
-- slots
-- farmers
-- bookings
-- tokens
-- procurements
-- payments
+This prototype script is aligned with the active database configuration:
+Database: 'kisanqueue'
 """
 
 import json
@@ -26,9 +19,9 @@ def seed_database():
         return
 
     mongo_uri = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
-    db_name = os.environ.get("DB_NAME", "kisanqueue_db")
+    db_name = os.environ.get("MONGO_DB", os.environ.get("DB_NAME", "kisanqueue"))
     
-    print(f"Connecting to MongoDB at {mongo_uri}...")
+    print(f"Connecting to MongoDB database: '{db_name}' at {mongo_uri}...")
     client = MongoClient(mongo_uri)
     db = client[db_name]
 
@@ -45,10 +38,16 @@ def seed_database():
         "payments.json": "payments"
     }
 
+    reset_requested = "--reset" in sys.argv
+    if not reset_requested:
+        print("Safety Notice: To avoid wiping active bookings or demo records, this script requires '--reset' to drop collections.")
+        print("For active project development, run: python KisanQueue_backend_starter/KisanQueue_backend/seed.py")
+        return
+
     for file_name, collection_name in files_to_collections.items():
         file_path = os.path.join(data_dir, file_name)
         if os.path.exists(file_path):
-            with open(file_path, "r") as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
             if data:
                 db[collection_name].drop()

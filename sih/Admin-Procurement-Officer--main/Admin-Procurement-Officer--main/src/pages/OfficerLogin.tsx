@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Building2, Lock, UserCheck, AlertCircle, ArrowLeft, ShieldAlert } from 'lucide-react';
 import { SyntheticDataBadge } from '../components/SyntheticDataBadge';
@@ -11,6 +11,7 @@ export const OfficerLogin: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const { loginOfficer } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,6 +64,12 @@ export const OfficerLogin: React.FC = () => {
               <div className="mb-6 p-3 bg-rose-50 border border-rose-200 rounded-lg flex items-start gap-2.5 text-xs text-rose-800">
                 <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
                 <span>{error}</span>
+              </div>
+            )}
+
+            {searchParams.get('reason') === 'permissions' && !error && (
+              <div className="mb-6 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900">
+                Your saved session did not have officer access. Please sign in again to verify tokens.
               </div>
             )}
 

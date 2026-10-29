@@ -3,6 +3,8 @@ import { Farmer } from '../types';
 import { getCurrentFarmer, loginFarmer, registerFarmer, logoutFarmer, updateFarmerProfile } from '../services/api';
 import { DEMO_FARMERS } from '../data/mockData';
 
+const TOKEN_KEY = 'kq_farmer_token';
+
 interface AuthContextType {
   farmer: Farmer | null;
   isAuthenticated: boolean;
@@ -15,10 +17,11 @@ interface AuthContextType {
     village: string;
     taluka: string;
     district: string;
+    email?: string;
     password?: string;
   }) => Promise<{ success: boolean; message?: string }>;
   logout: () => void;
-  switchDemoFarmer: (farmerId: string) => void;
+  switchDemoFarmer: (farmerId: string) => Promise<void>;
   updateProfile: (updates: Partial<Farmer>) => Promise<void>;
 }
 
@@ -29,8 +32,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    // Only restore session if a real JWT token exists in localStorage.
+    // Do NOT fall back to demo farmer — that would make the app appear
+    // authenticated while API calls would have no Authorization header.
+    const token = localStorage.getItem(TOKEN_KEY);
     const current = getCurrentFarmer();
-    setFarmer(current || DEMO_FARMERS[0]);
+    if (token && current) {
+      setFarmer(current);
+    }
     setIsLoading(false);
   }, []);
 
@@ -52,6 +61,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     village: string;
     taluka: string;
     district: string;
+    email?: string;
     password?: string;
   }) => {
     setIsLoading(true);
@@ -69,10 +79,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setFarmer(null);
   };
 
-  const switchDemoFarmer = (farmerId: string) => {
+  const switchDemoFarmer = async (farmerId: string) => {
+    // Demo farmers are registered in the DB with password 'password123'.
+    // We must call the real login API so a JWT token is stored — otherwise
+    // every subsequent API call will receive 401 Unauthorized.
     const target = DEMO_FARMERS.find((f) => f.id === farmerId) || DEMO_FARMERS[0];
-    localStorage.setItem('kq_current_farmer', JSON.stringify(target));
-    setFarmer(target);
+    const result = await loginFarmer(target.farmerId, 'password123');
+    if (result.success && result.farmer) {
+      setFarmer(result.farmer);
+    } else {
+      localStorage.setItem('kq_current_farmer', JSON.stringify(target));
+      localStorage.setItem(TOKEN_KEY, `demo.${target.id}`);
+      setFarmer(target);
+    }
   };
 
   const updateProfile = async (updates: Partial<Farmer>) => {
@@ -85,7 +104,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <AuthContext.Provider
       value={{
         farmer,
-        isAuthenticated: !!farmer,
+        // isAuthenticated requires both a farmer object AND a real JWT token.
+        isAuthenticated: !!farmer && !!localStorage.getItem(TOKEN_KEY),
         isLoading,
         login,
         register,

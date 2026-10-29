@@ -75,20 +75,20 @@ export const AdminReports: React.FC = () => {
     const headers = ['Metric', 'Category', 'Value', 'Unit'];
     const rows: string[][] = [
       headers,
-      ['Total Centers', 'Statewide', '50', 'Centers'],
-      ['Total Procurement Slots', 'Statewide', '1000', 'Slots'],
-      ['Total Intake Capacity', 'Statewide', '25000', 'Quintals'],
-      ['Total Registered Farmers', 'Statewide', '120', 'Farmers'],
-      ['Completed Procurements', 'Statewide', '42', 'Batches'],
-      ['Total Volume Procured', 'Statewide', '1180.5', 'Quintals'],
-      ['Total MSP Disbursed', 'Statewide', '₹5,775,000', 'INR'],
+      ['Total Centers', 'Statewise', '50', 'Centers'],
+      ['Total Procurement Slots', 'Statewise', '1000', 'Slots'],
+      ['Total Intake Capacity', 'Statewise', '25000', 'Quintals'],
+      ['Total Registered Farmers', 'Statewise', '120', 'Farmers'],
+      ['Completed Procurements', 'Statewise', '42', 'Batches'],
+      ['Total Volume Procured', 'Statewise', '1180.5', 'Quintals'],
+      ['Total MSP Disbursed', 'Statewise', '₹5,775,000', 'INR'],
     ];
 
     const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((e) => e.join(',')).join('\n');
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', 'KisanQueue_Statewide_Procurement_Report_2026.csv');
+    link.setAttribute('download', 'KisanQueue_Statewise_Procurement_Report_2026.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

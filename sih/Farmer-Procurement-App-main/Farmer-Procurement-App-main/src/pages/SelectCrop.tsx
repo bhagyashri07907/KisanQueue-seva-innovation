@@ -6,9 +6,8 @@ import { MobileLayout } from '../layouts/MobileLayout';
 import { CropCard } from '../components/CropCard';
 import { useAuth } from '../hooks/useAuth';
 import { useBookingFlow } from '../hooks/useBookingFlow';
-import { getCrops } from '../services/api';
+import { getCrops, getProcurementCenters } from '../services/api';
 import { Crop } from '../types';
-import { DEMO_CENTERS } from '../data/mockData';
 
 export const SelectCrop: React.FC = () => {
   const { t } = useTranslation();
@@ -18,6 +17,7 @@ export const SelectCrop: React.FC = () => {
   const [crops, setCrops] = useState<Crop[]>([]);
   const [selectedCropId, setSelectedCropId] = useState<string>(state.cropId || 'crop_soybean');
   const [error, setError] = useState<string | null>(null);
+  const [centerCounts, setCenterCounts] = useState<Record<string, number>>({});
 
   const activeDistrict = state.district || farmer?.district || 'Pune';
   const activeTaluka = state.taluka || farmer?.taluka || 'Baramati';
@@ -31,12 +31,14 @@ export const SelectCrop: React.FC = () => {
   useEffect(() => {
     getCrops().then((data) => {
       setCrops(data);
+      Promise.all(data.map(async (crop) => [crop.id, (await getProcurementCenters(crop.id, activeDistrict)).length] as const))
+        .then((counts) => setCenterCounts(Object.fromEntries(counts)));
       if (!state.cropId && data.length > 0) {
         setSelectedCropId(data[0].id);
         setCrop(data[0].id);
       }
     });
-  }, [state.cropId, setCrop]);
+  }, [state.cropId, setCrop, activeDistrict]);
 
   const handleSelect = (cropId: string) => {
     setSelectedCropId(cropId);
@@ -55,11 +57,7 @@ export const SelectCrop: React.FC = () => {
 
   // Count centers in active district accepting a given crop
   const getCenterCountForCrop = (cropId: string) => {
-    return DEMO_CENTERS.filter(
-      (c) =>
-        c.district.toLowerCase() === activeDistrict.toLowerCase() &&
-        c.acceptedCropIds.includes(cropId)
-    ).length;
+    return centerCounts[cropId] || 0;
   };
 
   return (
@@ -69,8 +67,8 @@ export const SelectCrop: React.FC = () => {
           {/* Progress Indicator */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-400">
-              <span className="text-emerald-800 font-black">Step 2 of 4</span>
-              <span>Select Crop</span>
+              <span className="text-emerald-800 font-black">{t('stepProgress', { current: 2 })}</span>
+              <span>{t('stepSelectCrop')}</span>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-emerald-600 h-full w-2/4 rounded-full transition-all" />
@@ -82,7 +80,7 @@ export const SelectCrop: React.FC = () => {
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-emerald-700 shrink-0" />
               <div>
-                <span className="text-slate-500 font-medium">Procurement District: </span>
+                <span className="text-slate-500 font-medium">{t('district')}: </span>
                 <span className="font-bold text-slate-900">{activeDistrict}</span>
                 {activeTaluka && <span className="text-slate-500"> ({activeTaluka})</span>}
               </div>

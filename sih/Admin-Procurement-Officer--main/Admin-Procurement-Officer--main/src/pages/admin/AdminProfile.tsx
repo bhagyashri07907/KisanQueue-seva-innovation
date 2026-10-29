@@ -83,7 +83,7 @@ export const AdminProfile: React.FC = () => {
         phone: '+91 20 2553 8291',
         mobile: '+91 94220 18492',
         office_address: 'State Central Agricultural Directorate, Sakhar Sankul, Shivajinagar, Pune, Maharashtra - 411005',
-        jurisdiction: 'Statewide (All 36 Districts, Maharashtra)',
+        jurisdiction: 'Statewise (All 36 Districts, Maharashtra)',
         role: 'Super Administrator',
         security_clearance: 'Level 4 (State Apex Clearance)',
         status: 'Active',
@@ -91,7 +91,7 @@ export const AdminProfile: React.FC = () => {
         login_ip: '10.14.22.8 (Govt Intranet State Data Center)',
         mfa_enabled: true,
         authorities: [
-          'Statewide Center Configuration & Decommissioning',
+          'Statewise Center Configuration & Decommissioning',
           'Dynamic Intake Capacity & Slot Allocation Control',
           'Procurement Officer Credential Issuance & Revocation',
           'Kharif & Rabi MSP Price Benchmarking',
@@ -203,7 +203,7 @@ export const AdminProfile: React.FC = () => {
             <span className="text-xl font-bold text-[#064E3B] mt-1 block">
               {p.stats.total_intake_capacity_quintals.toLocaleString()} Qtl
             </span>
-            <span className="text-[10px] text-slate-400">Total Statewide Quota</span>
+            <span className="text-[10px] text-slate-400">Total Statewise Quota</span>
           </div>
           <div className="p-4">
             <span className="text-[11px] font-semibold text-slate-500 block">PFMS DBT Batches</span>

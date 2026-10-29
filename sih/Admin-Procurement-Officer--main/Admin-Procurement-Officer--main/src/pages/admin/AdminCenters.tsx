@@ -23,10 +23,11 @@ const MAHARASHTRA_DISTRICTS = [
   'Pune', 'Satara', 'Sangli', 'Kolhapur', 'Nashik',
   'Ahmednagar', 'Solapur', 'Aurangabad', 'Jalgaon', 'Dhule',
   'Nandurbar', 'Beed', 'Latur', 'Osmanabad', 'Nagpur',
-  'Amravati', 'Akola', 'Yavatmal', 'Wardha', 'Buldhana'
+  'Amravati', 'Akola', 'Yavatmal', 'Wardha', 'Buldhana',
+  'Dharashiv', 'Hingoli', 'Nanded', 'Chhatrapati Sambhajinagar'
 ];
 
-const CROPS = ['All', 'Soybean', 'Wheat', 'Gram (Chana)', 'Cotton', 'Tur (Arhar)', 'Jowar', 'Bajra', 'Maize', 'Groundnut'];
+const CROPS = ['All', 'Soybean', 'Wheat', 'Gram (Chana)', 'Gram/Chana', 'Cotton', 'Tur (Arhar)', 'Jowar', 'Bajra', 'Maize', 'Groundnut', 'Moong', 'Urad', 'Paddy', 'Ragi'];
 
 export const AdminCenters: React.FC = () => {
   const [centers, setCenters] = useState<ProcurementCenter[]>([]);
@@ -333,7 +334,7 @@ export const AdminCenters: React.FC = () => {
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
           <div>
             <h3 className="font-bold text-slate-800 text-sm">Master Data: Procurement Centers (Maharashtra)</h3>
-            <p className="text-[11px] text-slate-500">Official government intake centers and operational parameters</p>
+            <p className="text-[11px] text-slate-500">Verified center and crop master records, with source status and legacy demo records identified</p>
           </div>
           <div className="text-xs text-slate-500 font-mono">
             Total Seeded: <span className="font-bold text-slate-800">{centers.length}</span>
@@ -374,6 +375,8 @@ export const AdminCenters: React.FC = () => {
                     <td className="px-6 py-3.5">
                       <div className="font-semibold text-slate-900">{center.center_name}</div>
                       <div className="text-[11px] text-slate-500 truncate max-w-xs">{center.location}</div>
+                      {center.catalog_source === 'verified_procurement_master' && <div className="text-[10px] text-amber-700">{center.agency || 'Agency not listed'} · {center.seasons?.join(', ')} · verified {center.verification_date}</div>}
+                      {center.catalog_source !== 'verified_procurement_master' && <div className="text-[10px] text-slate-400">{center.data_source || 'Legacy record'}</div>}
                     </td>
                     <td className="px-6 py-3.5">
                       <div className="font-medium text-slate-800">{center.district}</div>
@@ -392,16 +395,21 @@ export const AdminCenters: React.FC = () => {
                       </div>
                     </td>
                     <td className="px-6 py-3.5 font-medium">
-                      <div className="font-bold text-slate-900">{center.daily_capacity ?? center.daily_procurement_capacity_quintals ?? 500} Quintals/day</div>
-                      <div className="text-[11px] text-slate-500">{(center.intake_capacity ?? center.intake_capacity_quintals ?? 5000).toLocaleString()} Q max capacity</div>
+                      <div className="font-bold text-slate-900">{center.daily_capacity ?? center.daily_procurement_capacity_quintals ?? 'Not supplied'}{(center.daily_capacity ?? center.daily_procurement_capacity_quintals) != null ? ' Quintals/day' : ''}</div>
+                      <div className="text-[11px] text-slate-500">{(center.intake_capacity ?? center.intake_capacity_quintals) != null ? `${(center.intake_capacity ?? center.intake_capacity_quintals).toLocaleString()} Q max capacity` : 'Intake capacity not supplied'}</div>
                     </td>
                     <td className="px-6 py-3.5 font-mono text-[11px] text-slate-600">
                       {typeof center.operating_hours === 'object' && center.operating_hours
                         ? `${center.operating_hours.start || '09:00'} - ${center.operating_hours.end || '17:00'}`
-                        : (center.operating_hours || '09:00 - 17:00')}
+                        : (center.operating_hours || 'Not supplied')}
                     </td>
                     <td className="px-6 py-3.5">
-                      {String(center.status).toLowerCase() === 'active' ? (
+                      {center.operational_status === 'seasonal_reference' ? (
+                        <span className="text-amber-700 flex items-center font-bold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2"></span>
+                          Seasonal reference · live status unknown
+                        </span>
+                      ) : String(center.status).toLowerCase() === 'active' ? (
                         <span className="text-emerald-600 flex items-center font-bold">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2"></span>
                           Active

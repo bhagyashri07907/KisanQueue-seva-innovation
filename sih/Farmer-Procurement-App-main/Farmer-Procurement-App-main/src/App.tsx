@@ -5,6 +5,7 @@ import { BookingFlowProvider } from './hooks/useBookingFlow';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { useTranslation } from 'react-i18next';
 
 // Pages - Lazy loaded
 const Login = React.lazy(() => import('./pages/Login').then(module => ({ default: module.Login })));
@@ -66,12 +67,7 @@ export default function App() {
         <AuthProvider>
           <BookingFlowProvider>
             <BrowserRouter>
-              <React.Suspense fallback={
-                <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center p-4">
-                  <div className="w-8 h-8 border-3 border-emerald-600 border-t-transparent rounded-full animate-spin mb-4" />
-                  <p className="text-slate-500 font-medium">Loading...</p>
-                </div>
-              }>
+              <React.Suspense fallback={<LoadingFallback />}>
                 <Routes>
             {/* Public Routes */}
             <Route path="/login" element={<Login />} />
@@ -214,3 +210,13 @@ export default function App() {
     </ErrorBoundary>
   );
 }
+
+const LoadingFallback: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center p-4">
+      <div className="w-8 h-8 border-3 border-emerald-600 border-t-transparent rounded-full animate-spin mb-4" />
+      <p className="text-slate-500 font-medium">{t('loading')}</p>
+    </div>
+  );
+};

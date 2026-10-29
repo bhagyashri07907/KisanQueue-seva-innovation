@@ -20,7 +20,7 @@ import { SyntheticDataBadge } from '../../components/SyntheticDataBadge';
 
 export const OfficerVerifyToken: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [tokenInput, setTokenInput] = useState(searchParams.get('token') || 'KQ-2026-00125');
+  const [tokenInput, setTokenInput] = useState(searchParams.get('token') || '');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [verifiedBooking, setVerifiedBooking] = useState<Booking | null>(null);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { apiRequest } from '../../lib/api';
+import { apiRequest, downloadCSV } from '../../lib/api';
 import { AdminDashboardData } from '../../types';
 import {
   Building2,
@@ -12,12 +12,11 @@ import {
   CreditCard,
   UserCheck,
   ArrowRight,
-  TrendingUp,
   AlertCircle,
   BarChart3,
-  PieChart as PieChartIcon
+  PieChart as PieChartIcon,
+  Download
 } from 'lucide-react';
-import { SyntheticDataBadge } from '../../components/SyntheticDataBadge';
 import {
   ResponsiveContainer,
   BarChart,
@@ -36,6 +35,8 @@ export const AdminDashboard: React.FC = () => {
   const [data, setData] = useState<AdminDashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [exportingDataset, setExportingDataset] = useState<'farmers' | 'officers' | 'bookings' | null>(null);
+  const [exportError, setExportError] = useState('');
 
   useEffect(() => {
     fetchDashboardData();
@@ -50,6 +51,18 @@ export const AdminDashboard: React.FC = () => {
       setError(err.message || 'Failed to fetch dashboard data');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleExport = async (dataset: 'farmers' | 'officers' | 'bookings') => {
+    setExportingDataset(dataset);
+    setExportError('');
+    try {
+      await downloadCSV(dataset);
+    } catch (err: any) {
+      setExportError(err.message || `Could not download ${dataset} data.`);
+    } finally {
+      setExportingDataset(null);
     }
   };
 
@@ -161,39 +174,20 @@ export const AdminDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Disclaimer Banner */}
-      <div className="p-4 bg-amber-50/90 border border-amber-300 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
-        <div className="flex items-start gap-3">
-          <div className="p-1.5 bg-amber-200 text-amber-900 rounded-md shrink-0">
-            <TrendingUp className="w-4 h-4" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-amber-950 uppercase tracking-wide">
-                Prototype Synthetic Government Dataset
-              </span>
-              <span className="text-[10px] bg-amber-200/80 text-amber-900 font-semibold px-2 py-0.5 rounded-full">
-                Simulated Demonstration
-              </span>
-            </div>
-            <p className="text-xs text-amber-900 mt-0.5">
-              Notice: All numbers, centers, slots, and capacities shown are generated synthetic prototype data for
-              evaluation. They do not claim or represent official government statistics.
-            </p>
-          </div>
-        </div>
-        <SyntheticDataBadge />
-      </div>
-
       {/* Title & Quick Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">Statewide Procurement Overview</h1>
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight">Statewise Procurement Overview</h1>
           <p className="text-xs text-slate-500 mt-0.5">
             Agricultural Procurement Centers, Booking Slots, Intake Capacities &amp; Officer Management
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2.5">
+          {(['farmers', 'officers', 'bookings'] as const).map((dataset) => (
+            <button key={dataset} onClick={() => void handleExport(dataset)} disabled={exportingDataset !== null} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:opacity-60">
+              <Download className="w-3.5 h-3.5" /> {exportingDataset === dataset ? 'Downloading…' : `Export ${dataset}`}
+            </button>
+          ))}
           <Link
             id="add-officer-quick-btn"
             to="/admin/officers"
@@ -218,6 +212,8 @@ export const AdminDashboard: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      {exportError && <div role="alert" className="p-3 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-800">{exportError}</div>}
 
       {/* 8 Metric Cards Grid - High Density Architecture */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -261,7 +257,7 @@ export const AdminDashboard: React.FC = () => {
                 <BarChart3 className="w-4 h-4 text-[#064E3B]" />
               </div>
               <div>
-                <h2 className="text-sm font-bold text-slate-900">Statewide Grain Intake vs. Target Capacity</h2>
+                <h2 className="text-sm font-bold text-slate-900">Statewise Grain Intake vs. Target Capacity</h2>
                 <p className="text-[11px] text-slate-400">Daily intake quota execution against allocated procurement ceiling</p>
               </div>
             </div>

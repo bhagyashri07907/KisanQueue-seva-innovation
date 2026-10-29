@@ -7,6 +7,18 @@ export function getAuthToken(): string | null {
   return localStorage.getItem(TOKEN_KEY);
 }
 
+export function getTokenRole(token: string | null): string | null {
+  if (!token) return null;
+  try {
+    const payload = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    const padded = payload.padEnd(Math.ceil(payload.length / 4) * 4, '=');
+    const claims = JSON.parse(atob(padded));
+    return typeof claims.role === 'string' ? claims.role.toLowerCase() : null;
+  } catch {
+    return null;
+  }
+}
+
 export function setAuthSession(token: string, user: any) {
   localStorage.setItem(TOKEN_KEY, token);
   localStorage.setItem(USER_KEY, JSON.stringify(user));
@@ -50,6 +62,22 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+      const endpoint = String(error.config?.url || '');
+      const detail = error.response.data?.detail || error.response.data?.error || '';
+      const isAdminEndpoint = endpoint.includes('/admin/');
+      const isAdminSessionError = error.response.status === 401 || detail === 'Insufficient permissions';
+      if (isAdminEndpoint && isAdminSessionError) {
+        clearAuthSession();
+        if (window.location.pathname !== '/admin/login') {
+          window.location.assign(`/admin/login?reason=${error.response.status === 401 ? 'session' : 'permissions'}`);
+        }
+      }
+      if (endpoint.includes('/officer/') && detail === 'Insufficient permissions') {
+        clearAuthSession();
+        if (window.location.pathname !== '/officer/login') {
+          window.location.assign('/officer/login?reason=permissions');
+        }
+      }
       if (window.location.pathname !== '/admin/login' && window.location.pathname !== '/officer/login') {
         console.warn('Authentication expired or unauthorized:', error.response.data?.error || error.message);
       }
@@ -88,5 +116,17 @@ export async function apiRequest<T = any>(endpoint: string, options: any = {}): 
       `Request failed with status ${err.response?.status || 500}`;
     throw new Error(errorMsg);
   }
+}
+
+export async function downloadCSV(dataset: 'farmers' | 'officers' | 'bookings'): Promise<void> {
+  const response = await apiClient.get(`/admin/export/${dataset}`, { responseType: 'blob' });
+  const url = URL.createObjectURL(response.data);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `kisanqueue_${dataset}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 

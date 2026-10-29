@@ -23,7 +23,7 @@ export const PWAInstallButton: React.FC = () => {
           </div>
           <div>
             <p className="text-xs font-bold text-emerald-950">{t('installApp')}</p>
-            <p className="text-[11px] text-emerald-700 leading-tight">Install for 1-tap mobile access</p>
+            <p className="text-[11px] text-emerald-700 leading-tight">{t('installOneTap')}</p>
           </div>
         </div>
         <button
@@ -45,14 +45,14 @@ export const PWAInstallButton: React.FC = () => {
         <div id="pwa-ios-banner" className="bg-emerald-50 border-b border-emerald-200 px-4 py-2 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Smartphone className="w-4 h-4 text-emerald-700" />
-            <span className="text-xs font-medium text-emerald-900">Install KisanQueue app</span>
+            <span className="text-xs font-medium text-emerald-900">{t('installApp')}</span>
           </div>
           <button
             id="btn-install-ios"
             onClick={() => setShowIOSGuide(true)}
             className="text-xs font-bold text-emerald-700 underline"
           >
-            How to install
+            {t('howToInstall')}
           </button>
         </div>
 
@@ -60,7 +60,7 @@ export const PWAInstallButton: React.FC = () => {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
             <div className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-2xl">
               <div className="flex items-center justify-between border-b pb-3">
-                <h3 className="text-base font-bold text-slate-900">Install KisanQueue on iPhone</h3>
+                <h3 className="text-base font-bold text-slate-900">{t('installOnIphone')}</h3>
                 <button
                   onClick={() => setShowIOSGuide(false)}
                   className="rounded-full p-1 text-slate-400 hover:bg-slate-100"
@@ -74,7 +74,7 @@ export const PWAInstallButton: React.FC = () => {
                     1
                   </div>
                   <p>
-                    Tap the <strong>Share</strong> button <Share2 className="w-4 h-4 inline text-blue-600 mx-1" /> in Safari's bottom toolbar.
+                    {t('tap')} <strong>{t('shareButton')}</strong> <Share2 className="w-4 h-4 inline text-blue-600 mx-1" /> {t('inSafariToolbar')}
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
@@ -82,14 +82,14 @@ export const PWAInstallButton: React.FC = () => {
                     2
                   </div>
                   <p>
-                    Scroll down and select <strong>Add to Home Screen</strong>.
+                    {t('scrollSelect')} <strong>{t('addToHomeScreen')}</strong>.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
                     3
                   </div>
-                  <p>Tap <strong>Add</strong> in the top right to open KisanQueue anytime from your screen.</p>
+                  <p>{t('tap')} <strong>{t('add')}</strong> {t('toOpenKisanQueue')}</p>
                 </div>
               </div>
               <button

@@ -15,17 +15,27 @@ export interface ProcurementCenter {
   district: string;
   taluka: string;
   location: string;
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
   accepted_crops: string[];
-  intake_capacity: number;
-  daily_capacity: number;
+  intake_capacity: number | null;
+  daily_capacity: number | null;
   operating_hours: {
     start: string;
     end: string;
-  };
+  } | null;
   status: 'active' | 'inactive';
   dataset_label?: string;
+  data_source?: string;
+  catalog_source?: string;
+  agency?: string;
+  seasons?: string[];
+  centre_status?: string;
+  physical_centre_verified?: string;
+  verification_date?: string;
+  live_status?: string;
+  source_note?: string;
+  operational_status?: string;
 }
 
 export interface Slot {
@@ -191,6 +201,7 @@ export interface OfficerDashboardData {
     quality_checks_completed: number;
     procurement_completed: number;
     pending_farmers: number;
+    new_bookings_count?: number;
     todays_bookings_count?: number;
     pending_verification_count?: number;
     verified_farmers_count?: number;
@@ -198,6 +209,44 @@ export interface OfficerDashboardData {
     pending_payments_count?: number;
   };
   todays_bookings: Booking[];
+}
+
+export interface OfficerNotification {
+  id: string;
+  type: string;
+  recipient_type?: string;
+  recipient_officer_id?: string;
+  center_id: string;
+  booking_id: string;
+  farmer_id?: string;
+  farmer_name?: string;
+  event_type?: string;
+  message: string;
+  digital_token?: string;
+  crop?: string;
+  expected_quantity_quintals?: number;
+  read: boolean;
+  created_at: string;
+}
+
+export interface AreaFarmer {
+  farmer_id: string;
+  farmer_name: string;
+  farmerId: string;
+  village: string;
+  taluka: string;
+  district: string;
+  mobile_masked: string;
+  booking_id: string;
+  digital_token: string;
+  crop: string;
+  date: string;
+  time_slot: string;
+  expected_quantity_quintals: number;
+  booking_status: string;
+  procurement_status: string;
+  payment_status: string;
+  created_at: string;
 }
 
 export interface NotificationRecord {

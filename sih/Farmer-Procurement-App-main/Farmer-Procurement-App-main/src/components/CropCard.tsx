@@ -13,15 +13,16 @@ interface CropCardProps {
 
 export const CropCard: React.FC<CropCardProps> = ({ crop, isSelected, onSelect, centerCount, districtName }) => {
   const { t, i18n } = useTranslation();
+  const language = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
   const getLocalizedName = () => {
-    if (i18n.language === 'hi') return crop.nameHi;
-    if (i18n.language === 'mr') return crop.nameMr;
+    if (language === 'hi') return crop.nameHi;
+    if (language === 'mr') return crop.nameMr;
     return crop.name;
   };
 
   const getSecondaryName = () => {
-    if (i18n.language === 'en') return `${crop.nameMr} / ${crop.nameHi}`;
+    if (language === 'en') return `${crop.nameMr} / ${crop.nameHi}`;
     return crop.name;
   };
 
@@ -68,7 +69,9 @@ export const CropCard: React.FC<CropCardProps> = ({ crop, isSelected, onSelect, 
           </div>
           <div className="mt-1.5 flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold text-emerald-800 bg-white border border-emerald-200 px-2.5 py-0.5 rounded-lg">
-              {t('mspRate')}: ₹{crop.mspPerQuintal.toLocaleString('en-IN')}/{t('perQuintal')}
+              {crop.mspPerQuintal != null
+                ? `${t('mspRate')}: ₹${crop.mspPerQuintal.toLocaleString('en-IN')}/${t('perQuintal')}`
+                : 'MSP not listed in source data'}
             </span>
             {centerCount !== undefined && districtName && (
               <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md ${

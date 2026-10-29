@@ -14,6 +14,12 @@ import {
 import { SyntheticDataBadge } from '../../components/SyntheticDataBadge';
 import { ReceiptModal } from '../../components/ReceiptModal';
 
+const formatAmount = (value: unknown) => {
+  if (value === null || value === undefined || value === '') return '—';
+  const amount = Number(value);
+  return Number.isFinite(amount) ? amount.toLocaleString() : '—';
+};
+
 export const AdminProcurement: React.FC = () => {
   const [records, setRecords] = useState<ProcurementRecord[]>([]);
   const [loading, setLoading] = useState(true);
@@ -192,10 +198,10 @@ export const AdminProcurement: React.FC = () => {
                       </span>
                     </td>
                     <td className="px-4 py-2.5 text-right font-mono font-semibold text-slate-800">
-                      ₹{rec.msp_rate.toLocaleString()} / Q
+                      ₹{formatAmount(rec.msp_rate)} / Q
                     </td>
                     <td className="px-4 py-2.5 text-right font-mono font-bold text-slate-900">
-                      ₹{rec.total_amount.toLocaleString()}
+                      ₹{formatAmount(rec.total_amount)}
                     </td>
                     <td className="px-4 py-2.5 text-right">
                       <button

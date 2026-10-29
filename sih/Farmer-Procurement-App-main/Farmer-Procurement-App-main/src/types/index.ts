@@ -2,6 +2,7 @@ export interface Farmer {
   id: string;
   fullName: string;
   mobileNumber: string;
+  email?: string;
   farmerId: string; // e.g. 7/12 Land Record ID / Kisan Card ID
   village: string;
   taluka: string;
@@ -18,7 +19,7 @@ export interface Crop {
   nameHi: string;
   nameMr: string;
   category: string;
-  mspPerQuintal: number;
+  mspPerQuintal?: number | null;
   unit: string;
   icon: string;
 }
@@ -35,7 +36,9 @@ export interface ProcurementCenter {
   capacityPerDayQuintals: number;
   contactPhone: string;
   operatingHours: string;
-  status: 'Available' | 'Full' | 'Maintenance';
+  status: 'Available' | 'Full' | 'Maintenance' | 'Seasonal Reference';
+  liveStatus?: string;
+  seasons?: string[];
 }
 
 export interface TimeSlot {
@@ -75,6 +78,8 @@ export interface Booking {
   digitalToken: string; // e.g. "KQ-2026-00125"
   status: BookingStatus;
   paymentStatus: PaymentStatus;
+  emailStatus?: string;
+  email_status?: string;
   createdAt: string;
   verifiedAt?: string;
   procurementAt?: string;

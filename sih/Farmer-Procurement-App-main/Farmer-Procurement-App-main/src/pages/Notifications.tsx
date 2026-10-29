@@ -15,12 +15,15 @@ export const Notifications: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (farmer) {
+    const token = localStorage.getItem('kq_farmer_token');
+    if (farmer && token) {
       setLoading(true);
       getNotifications(farmer.id).then((data) => {
         setNotifications(data);
         setLoading(false);
       });
+    } else {
+      setLoading(false);
     }
   }, [farmer]);
 
@@ -55,7 +58,7 @@ export const Notifications: React.FC = () => {
               {t('notificationsTitle')}
             </h2>
             <p className="text-xs text-slate-600 mt-0.5">
-              Procurement alerts and slot updates
+              {t('notificationsSubtitle')}
             </p>
           </div>
 
@@ -65,7 +68,7 @@ export const Notifications: React.FC = () => {
               className="text-xs font-bold text-emerald-700 hover:underline flex items-center gap-1"
             >
               <CheckCheck className="w-3.5 h-3.5" />
-              <span>Mark all read</span>
+              <span>{t('markAllRead')}</span>
             </button>
           )}
         </div>
@@ -80,8 +83,8 @@ export const Notifications: React.FC = () => {
         {!loading && notifications.length === 0 && (
           <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center space-y-2">
             <Bell className="w-10 h-10 text-slate-300 mx-auto" />
-            <h3 className="text-sm font-bold text-slate-800">No Notifications</h3>
-            <p className="text-xs text-slate-500">You are all caught up with your updates.</p>
+            <h3 className="text-sm font-bold text-slate-800">{t('noNotifications')}</h3>
+            <p className="text-xs text-slate-500">{t('notificationsCaughtUp')}</p>
           </div>
         )}
 

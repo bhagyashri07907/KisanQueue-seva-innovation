@@ -18,11 +18,11 @@ interface CapacityItem {
   district: string;
   taluka: string;
   accepted_crops: string[];
-  daily_capacity_quintals: number;
-  total_intake_capacity_quintals: number;
+  daily_capacity_quintals: number | null;
+  total_intake_capacity_quintals: number | null;
   used_capacity_quintals: number;
-  remaining_capacity_quintals: number;
-  utilization_percent: number;
+  remaining_capacity_quintals: number | null;
+  utilization_percent: number | null;
 }
 
 export const AdminCapacity: React.FC = () => {
@@ -38,8 +38,43 @@ export const AdminCapacity: React.FC = () => {
   const fetchCapacity = async () => {
     try {
       setLoading(true);
-      const res = await apiRequest<{ capacity: CapacityItem[] }>('/admin/capacity');
-      setCapacities(res.capacity || []);
+      const [response, centersResponse, procurementResponse] = await Promise.all([
+        apiRequest<any>('/admin/capacity'),
+        apiRequest<any>('/admin/centers'),
+        apiRequest<any>('/admin/procurements'),
+      ]);
+      const rows: any[] = Array.isArray(response)
+        ? response
+        : Array.isArray(response?.capacity)
+          ? response.capacity
+          : [];
+      const centers: any[] = Array.isArray(centersResponse?.centers) ? centersResponse.centers : [];
+      const centersById = new Map(centers.map((center) => [center.center_id, center]));
+      const procurements: any[] = Array.isArray(procurementResponse?.records) ? procurementResponse.records : [];
+      const usedByCenter = new Map<string, number>();
+      for (const record of procurements) {
+        const weight = Number(record.actual_weight ?? record.weight_quintals ?? 0) || 0;
+        usedByCenter.set(record.center_id, (usedByCenter.get(record.center_id) || 0) + weight);
+      }
+      setCapacities(rows.map((item) => {
+        const center = centersById.get(item.center_id) || {};
+        const rawTotal = item.total_intake_capacity_quintals ?? item.intake_capacity_quintals ?? item.intake_capacity;
+        const total = rawTotal == null ? null : (Number(rawTotal) || 0);
+        const used = Number(item.used_capacity_quintals ?? usedByCenter.get(item.center_id) ?? 0) || 0;
+        const remaining = total == null ? null : (Number(item.remaining_capacity_quintals ?? Math.max(0, total - used)) || 0);
+        return {
+          center_id: item.center_id || '',
+          center_name: item.center_name || center.center_name || 'Procurement Center',
+          district: item.district || center.district || '',
+          taluka: item.taluka || center.taluka || '',
+          accepted_crops: Array.isArray(item.accepted_crops) ? item.accepted_crops : (center.accepted_crops || []),
+          daily_capacity_quintals: item.daily_capacity_quintals ?? item.daily_procurement_capacity_quintals ?? item.daily_capacity ?? null,
+          total_intake_capacity_quintals: total,
+          used_capacity_quintals: used,
+          remaining_capacity_quintals: remaining,
+          utilization_percent: total == null ? null : (Number(item.utilization_percent ?? (total ? used / total * 100 : 0)) || 0),
+        };
+      }));
     } catch (err) {
       console.error(err);
     } finally {
@@ -59,7 +94,7 @@ export const AdminCapacity: React.FC = () => {
     return matchesDistrict && matchesSearch;
   });
 
-  const totalIntake = capacities.reduce((sum, c) => sum + c.total_intake_capacity_quintals, 0);
+  const totalIntake = capacities.reduce((sum, c) => sum + (c.total_intake_capacity_quintals ?? 0), 0);
   const totalUsed = capacities.reduce((sum, c) => sum + c.used_capacity_quintals, 0);
   const totalRemaining = Math.max(0, totalIntake - totalUsed);
 
@@ -75,6 +110,7 @@ export const AdminCapacity: React.FC = () => {
           <p className="text-xs text-slate-500 mt-0.5">
             Procurement storage quotas, daily intake capacities, and grain intake utilization metrics
           </p>
+          <p className="text-[11px] text-amber-800 mt-1">The verified center master has no capacity or live utilization figures. “Not supplied” means the source did not provide a value; totals only include centers with recorded capacity.</p>
         </div>
       </div>
 
@@ -194,33 +230,33 @@ export const AdminCapacity: React.FC = () => {
                       </div>
                     </td>
                     <td className="px-4 py-2.5 text-right font-mono font-semibold text-slate-800">
-                      {item.daily_capacity_quintals} Q
+                      {item.daily_capacity_quintals == null ? 'Not supplied' : `${item.daily_capacity_quintals} Q`}
                     </td>
                     <td className="px-4 py-2.5 text-right font-mono font-bold text-slate-900">
-                      {item.total_intake_capacity_quintals.toLocaleString()} Q
+                      {item.total_intake_capacity_quintals == null ? 'Not supplied' : `${item.total_intake_capacity_quintals.toLocaleString()} Q`}
                     </td>
                     <td className="px-4 py-2.5 text-right font-mono font-bold text-indigo-700">
                       {item.used_capacity_quintals} Q
                     </td>
                     <td className="px-4 py-2.5 text-right font-mono font-bold text-[#064E3B]">
-                      {item.remaining_capacity_quintals} Q
+                      {item.remaining_capacity_quintals == null ? 'Not supplied' : `${item.remaining_capacity_quintals} Q`}
                     </td>
                     <td className="px-4 py-2.5">
                       <div className="space-y-1">
                         <div className="flex justify-between text-[11px]">
-                          <span className="font-semibold text-slate-700">{item.utilization_percent}%</span>
-                          <span className="text-slate-400">{item.remaining_capacity_quintals} Q left</span>
+                          <span className="font-semibold text-slate-700">{item.utilization_percent == null ? 'Not available' : `${item.utilization_percent}%`}</span>
+                          <span className="text-slate-400">{item.remaining_capacity_quintals == null ? 'Not available' : `${item.remaining_capacity_quintals} Q left`}</span>
                         </div>
                         <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
                           <div
                             className={`h-full rounded-full ${
-                              item.utilization_percent > 80
+                            (item.utilization_percent ?? 0) > 80
                                 ? 'bg-rose-500'
-                                : item.utilization_percent > 50
+                              : (item.utilization_percent ?? 0) > 50
                                 ? 'bg-amber-500'
                                 : 'bg-[#064E3B]'
                             }`}
-                            style={{ width: `${Math.min(100, item.utilization_percent)}%` }}
+                            style={{ width: `${Math.min(100, item.utilization_percent ?? 0)}%` }}
                           />
                         </div>
                       </div>

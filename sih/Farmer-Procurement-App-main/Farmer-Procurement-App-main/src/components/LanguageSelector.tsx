@@ -9,8 +9,10 @@ interface LanguageSelectorProps {
 export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ compact = false }) => {
   const { i18n } = useTranslation();
 
+  const currentLanguage = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
+
   const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
+    void i18n.changeLanguage(lang);
     localStorage.setItem('kq_language', lang);
   };
 
@@ -24,7 +26,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ compact = fa
     return (
       <div id="language-selector-compact" className="inline-flex items-center rounded-full bg-emerald-900/80 p-0.5 text-xs font-semibold text-white shadow-inner">
         {languages.map((l) => {
-          const isActive = i18n.language === l.code;
+          const isActive = currentLanguage === l.code;
           return (
             <button
               key={l.code}
@@ -50,7 +52,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ compact = fa
       <Globe className="w-4 h-4 text-emerald-700 ml-2 shrink-0" />
       <div className="flex gap-1.5 w-full">
         {languages.map((l) => {
-          const isActive = i18n.language === l.code;
+          const isActive = currentLanguage === l.code;
           return (
             <button
               key={l.code}

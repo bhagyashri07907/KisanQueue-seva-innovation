@@ -64,7 +64,7 @@ export const AvailableSlots: React.FC = () => {
 
   const handleProceed = () => {
     if (!selectedSlotId) {
-      setError('Please select an available time slot to continue.');
+      setError(t('selectSlotError'));
       return;
     }
     navigate('/booking-confirmation');
@@ -77,8 +77,8 @@ export const AvailableSlots: React.FC = () => {
           {/* Progress Indicator */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-400">
-              <span className="text-emerald-800 font-black">Step 4 of 4</span>
-              <span>Choose Slot</span>
+              <span className="text-emerald-800 font-black">{t('stepProgress', { current: 4 })}</span>
+              <span>{t('stepChooseSlot')}</span>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-emerald-600 h-full w-full rounded-full transition-all" />
@@ -91,11 +91,11 @@ export const AvailableSlots: React.FC = () => {
               <div className="font-bold text-slate-800 flex items-center gap-1.5">
                 <span>{selectedCenter?.name}</span>
                 <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold">
-                  Dist. {selectedCenter?.district}
+                  {t('districtShort')} {selectedCenter?.district}
                 </span>
               </div>
               <div className="text-slate-500 text-[11px]">
-                Crop: <span className="font-semibold text-slate-700">{selectedCrop?.name}</span> (MSP ₹{selectedCrop?.mspPerQuintal}/Qtl)
+                {t('cropShort')} <span className="font-semibold text-slate-700">{selectedCrop?.name}</span>{selectedCrop?.mspPerQuintal == null ? ` (${t('mspNotListed')})` : ` (MSP ₹${selectedCrop.mspPerQuintal}/Qtl)`}
               </div>
             </div>
             <button
@@ -103,7 +103,7 @@ export const AvailableSlots: React.FC = () => {
               onClick={() => navigate('/select-center')}
               className="text-emerald-800 hover:text-emerald-950 font-bold underline text-[11px] shrink-0 ml-2"
             >
-              Change Center
+              {t('changeCenter')}
             </button>
           </div>
 
@@ -114,7 +114,7 @@ export const AvailableSlots: React.FC = () => {
                 {t('availableSlotsTitle')}
               </h2>
               <p className="text-xs text-slate-500 mt-1">
-                Select an intake date and time slot for your harvest drop-off.
+                {t('slotDateSubtitle')}
               </p>
             </div>
             <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800 shrink-0">
@@ -159,9 +159,19 @@ export const AvailableSlots: React.FC = () => {
 
           {/* Available Slots List */}
           <div className="space-y-3" id="slots-list-container">
+            {dateSlotsList.length === 0 && (
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+                {t('noWindowsConfigured')}
+              </div>
+            )}
+            {dateSlotsList.length > 0 && (
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900">
+                {t('appConfiguredWindowsNotice')}
+              </div>
+            )}
             <div className="flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">
               <span>{t('timeSlot')}</span>
-              <span>Availability</span>
+              <span>{t('availability')}</span>
             </div>
 
             {activeDateObj?.slots.map((slot) => {
@@ -200,7 +210,7 @@ export const AvailableSlots: React.FC = () => {
                         {slot.timeWindow}
                       </span>
                       <span className="text-xs text-slate-400 font-medium mt-0.5 block">
-                        {t('capacity')}: {slot.capacity} farmers
+                        {t('capacity')}: {slot.capacity} {t('farmers')}
                       </span>
                     </div>
                   </div>

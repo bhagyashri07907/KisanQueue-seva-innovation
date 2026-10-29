@@ -17,10 +17,11 @@ export const CenterCard: React.FC<CenterCardProps> = ({
   onSelect,
 }) => {
   const { t, i18n } = useTranslation();
+  const language = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
   const getLocalizedCenterName = () => {
-    if (i18n.language === 'hi') return center.nameHi;
-    if (i18n.language === 'mr') return center.nameMr;
+    if (language === 'hi') return center.nameHi;
+    if (language === 'mr') return center.nameMr;
     return center.name;
   };
 
@@ -54,9 +55,9 @@ export const CenterCard: React.FC<CenterCardProps> = ({
           </div>
         </div>
 
-        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full shrink-0">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-          {center.status}
+        <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-0.5 rounded-full shrink-0 ${center.status === 'Seasonal Reference' ? 'text-amber-800 bg-amber-50 border border-amber-200' : 'text-emerald-800 bg-emerald-50 border border-emerald-200'}`}>
+          <span className={`w-1.5 h-1.5 rounded-full ${center.status === 'Seasonal Reference' ? 'bg-amber-600' : 'bg-emerald-600 animate-pulse'}`} />
+          {center.status === 'Seasonal Reference' ? t('seasonalReference') : center.status === 'Full' ? t('centerFull') : center.status === 'Maintenance' ? t('centerMaintenance') : center.status === 'Available' ? t('centerAvailable') : center.status}
         </span>
       </div>
 
@@ -71,9 +72,9 @@ export const CenterCard: React.FC<CenterCardProps> = ({
               const crop = crops.find((c) => c.id === cropId);
               const isTargetCrop = cropId === selectedCropId;
               const cropName = crop
-                ? i18n.language === 'mr'
+                ? language === 'mr'
                   ? crop.nameMr
-                  : i18n.language === 'hi'
+                  : language === 'hi'
                   ? crop.nameHi
                   : crop.name
                 : cropId;

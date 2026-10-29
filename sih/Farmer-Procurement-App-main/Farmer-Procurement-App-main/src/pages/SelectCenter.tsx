@@ -6,10 +6,8 @@ import { MobileLayout } from '../layouts/MobileLayout';
 import { CenterCard } from '../components/CenterCard';
 import { useAuth } from '../hooks/useAuth';
 import { useBookingFlow } from '../hooks/useBookingFlow';
-import { getProcurementCenters, getCrops } from '../services/api';
+import { getProcurementCenters, getCrops, getProcurementDistricts } from '../services/api';
 import { ProcurementCenter, Crop } from '../types';
-
-const DISTRICT_LIST = ['Pune', 'Satara', 'Nashik', 'Ahmednagar', 'Solapur', 'Kolhapur'];
 
 export const SelectCenter: React.FC = () => {
   const { t } = useTranslation();
@@ -19,6 +17,7 @@ export const SelectCenter: React.FC = () => {
 
   const [centers, setCenters] = useState<ProcurementCenter[]>([]);
   const [crops, setCrops] = useState<Crop[]>([]);
+  const [districtList, setDistrictList] = useState<string[]>([]);
   const [activeDistrict, setActiveDistrict] = useState<string>(
     state.district || farmer?.district || 'Pune'
   );
@@ -33,6 +32,11 @@ export const SelectCenter: React.FC = () => {
     Promise.all([getProcurementCenters(), getCrops()]).then(([centersData, cropsData]) => {
       setCenters(centersData);
       setCrops(cropsData);
+      getProcurementDistricts().then((districts) => {
+        const names = districts.map((district) => district.name);
+        setDistrictList(names);
+        if (names.length && !names.includes(activeDistrict)) setActiveDistrict(names[0]);
+      });
     });
   }, [state.cropId, navigate]);
 
@@ -70,8 +74,8 @@ export const SelectCenter: React.FC = () => {
           {/* Progress Indicator */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-400">
-              <span className="text-emerald-800 font-black">Step 3 of 4</span>
-              <span>Select Center</span>
+              <span className="text-emerald-800 font-black">{t('stepProgress', { current: 3 })}</span>
+              <span>{t('stepSelectCenter')}</span>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-emerald-600 h-full w-3/4 rounded-full transition-all" />
@@ -85,9 +89,7 @@ export const SelectCenter: React.FC = () => {
                 {t('selectCenterTitle')}
               </h2>
               <p className="text-xs text-slate-500 mt-1">
-                Showing available procurement centers in{' '}
-                <span className="font-bold text-slate-800">{activeDistrict} District</span> for{' '}
-                <span className="font-bold text-emerald-800">{selectedCrop?.name || 'your crop'}</span>.
+                {t('centersForDistrictCrop', { district: activeDistrict, crop: selectedCrop?.name || t('yourCrop') })}
               </p>
             </div>
             <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800 shrink-0">
@@ -99,9 +101,9 @@ export const SelectCenter: React.FC = () => {
           {selectedCrop && (
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
-                <span className="text-slate-500 font-medium">Crop:</span>
+                <span className="text-slate-500 font-medium">{t('cropShort')}</span>
                 <span className="font-bold text-emerald-900 bg-white border border-emerald-200 px-2.5 py-0.5 rounded-lg shadow-2xs">
-                  {selectedCrop.name} (MSP ₹{selectedCrop.mspPerQuintal}/Qtl)
+                {selectedCrop.name}{selectedCrop.mspPerQuintal != null ? ` (MSP ₹${selectedCrop.mspPerQuintal}/Qtl)` : ` (${t('mspNotListed')})`}
                 </span>
               </div>
               <button
@@ -109,7 +111,7 @@ export const SelectCenter: React.FC = () => {
                 onClick={() => navigate('/select-crop')}
                 className="text-emerald-800 hover:text-emerald-950 font-bold underline text-[11px]"
               >
-                Change Crop
+                {t('changeCrop')}
               </button>
             </div>
           )}
@@ -119,19 +121,19 @@ export const SelectCenter: React.FC = () => {
             <div className="flex items-center justify-between">
               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-emerald-700" />
-                <span>Filter by District</span>
+                <span>{t('filterByDistrict')}</span>
               </label>
               <button
                 type="button"
                 onClick={() => navigate('/select-location')}
                 className="text-xs text-emerald-800 hover:text-emerald-950 font-bold underline"
               >
-                Change Location
+                {t('changeLocation')}
               </button>
             </div>
 
             <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none" id="district-filter-pills">
-              {DISTRICT_LIST.map((dist) => {
+              {districtList.map((dist) => {
                 const isSelected = activeDistrict.toLowerCase() === dist.toLowerCase();
                 return (
                   <button
@@ -157,7 +159,7 @@ export const SelectCenter: React.FC = () => {
                     : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
                 }`}
               >
-                All Districts
+                {t('allDistricts')}
               </button>
             </div>
           </div>
@@ -166,7 +168,7 @@ export const SelectCenter: React.FC = () => {
           <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-2.5 text-xs text-slate-600">
             <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              Procurement centers are government-monitored. After selecting a center, you will choose an available date and time slot.
+              {t('centerWindowNotice')}
             </p>
           </div>
 

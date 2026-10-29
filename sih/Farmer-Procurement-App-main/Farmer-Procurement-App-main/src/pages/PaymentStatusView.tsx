@@ -55,9 +55,9 @@ export const PaymentStatusView: React.FC = () => {
           <div className="w-16 h-16 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
             <IndianRupee className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">No Payment Records</h3>
+          <h3 className="text-lg font-bold text-slate-900">{t('noPaymentRecords')}</h3>
           <p className="text-xs text-slate-600">
-            You don't have any procurement payment records yet.
+            {t('noPaymentRecordsDesc')}
           </p>
         </div>
       </MobileLayout>
@@ -86,7 +86,7 @@ export const PaymentStatusView: React.FC = () => {
         {bookings.length > 1 && (
           <div>
             <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">
-              Select Record:
+              {t('selectPaymentRecord')}
             </label>
             <select
               value={selectedBooking.id}
@@ -98,7 +98,7 @@ export const PaymentStatusView: React.FC = () => {
             >
               {bookings.map((b) => (
                 <option key={b.id} value={b.id}>
-                  {b.cropName} ({b.date}) - Payout: {b.paymentStatus}
+                  {b.cropName} ({b.date}) - {t('payoutOption')} {t(b.paymentStatus === 'Completed' ? 'paymentCompleted' : b.paymentStatus === 'Processing' ? 'paymentProcessing' : 'paymentPending')}
                 </option>
               ))}
             </select>
@@ -112,10 +112,10 @@ export const PaymentStatusView: React.FC = () => {
         <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-xs text-slate-700 space-y-2">
           <div className="flex items-center gap-2 font-bold text-slate-900">
             <ShieldCheck className="w-4 h-4 text-emerald-700" />
-            <span>Government Direct Benefit Transfer (DBT)</span>
+            <span>{t('governmentDbt')}</span>
           </div>
           <p className="leading-relaxed text-slate-600">
-            All MSP payments are transferred directly to the farmer's Aadhaar-linked bank account within 3 to 7 working days following successful physical weighment and moisture verification.
+            {t('dbtPaymentTerms')}
           </p>
         </div>
       </div>

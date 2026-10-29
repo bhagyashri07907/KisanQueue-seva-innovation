@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Ticket, Copy, Check, Info, ShieldCheck } from 'lucide-react';
 import { Booking } from '../types';
+import { localizePersonName } from '../i18n/personName';
 
 interface TokenCardProps {
   booking: Booking;
@@ -9,7 +10,7 @@ interface TokenCardProps {
 }
 
 export const TokenCard: React.FC<TokenCardProps> = ({ booking, showActions = true }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -32,7 +33,7 @@ export const TokenCard: React.FC<TokenCardProps> = ({ booking, showActions = tru
         {/* Big Prominent Human-Readable Token Number (Geometric Balance style, strictly no QR code) */}
         <div className="py-2">
           <div className="inline-block bg-slate-50 px-4 py-1.5 rounded-lg border border-slate-200 mb-2.5 shadow-2xs">
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">TOKEN ID</span>
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('tokenIdLabel')}</span>
           </div>
           <p
             id="digital-token-value"
@@ -84,7 +85,7 @@ export const TokenCard: React.FC<TokenCardProps> = ({ booking, showActions = tru
         {/* Row 2: Farmer Name */}
         <div className="pb-3 border-b border-slate-100">
           <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block">{t('farmerName')}</span>
-          <span className="text-base font-bold text-slate-900">{booking.farmerName}</span>
+          <span className="text-base font-bold text-slate-900">{localizePersonName(booking.farmerName, i18n.resolvedLanguage || i18n.language)}</span>
           <span className="text-xs text-slate-500 font-medium block mt-0.5">Mobile: {booking.farmerMobile}</span>
         </div>
 

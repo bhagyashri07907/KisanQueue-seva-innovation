@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Bell, Sprout, ShieldCheck } from 'lucide-react';
+import { Bell, Bot, ShieldCheck } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { getNotifications } from '../services/api';
 import { useAuth } from '../hooks/useAuth';
+import { localizePersonName } from '../i18n/personName';
 
 interface HeaderProps {
   showBack?: boolean;
@@ -13,10 +14,11 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ showBack, backTitle, onBack }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { farmer } = useAuth();
   const navigate = useNavigate();
   const [unreadCount, setUnreadCount] = useState<number>(0);
+  const displayFarmerName = localizePersonName(farmer?.fullName, i18n.resolvedLanguage || i18n.language);
 
   useEffect(() => {
     if (farmer) {
@@ -32,11 +34,11 @@ export const Header: React.FC<HeaderProps> = ({ showBack, backTitle, onBack }) =
       <div className="bg-emerald-800/90 px-4 py-1 flex items-center justify-between text-[11px] font-semibold text-emerald-100 border-b border-emerald-600/40">
         <div className="flex items-center gap-1.5 truncate">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-300 shrink-0" />
-          <span className="truncate uppercase tracking-wider text-[10px] font-bold">Govt. of India • MSP Procurement</span>
+          <span className="truncate uppercase tracking-wider text-[10px] font-bold">{t('govtDept')}</span>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <span className="bg-amber-400 text-emerald-950 font-black text-[9px] px-1.5 py-0.5 rounded tracking-widest uppercase">
-            DEMO
+            {t('demoBadgeLabel')}
           </span>
           <LanguageSelector compact />
         </div>
@@ -50,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ showBack, backTitle, onBack }) =
               id="header-back-button"
               onClick={onBack || (() => navigate(-1))}
               className="flex items-center gap-2 text-white p-1.5 -ml-1.5 rounded-xl hover:bg-emerald-800/60 active:bg-emerald-900 transition"
-              aria-label="Go back"
+              aria-label={t('back')}
             >
               <svg className="w-6 h-6 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -67,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ showBack, backTitle, onBack }) =
                   KisanQueue
                 </h1>
                 <p className="text-[10px] text-emerald-200 font-semibold tracking-wider uppercase mt-1">
-                  शेतकरी स्लॉट पोर्टल
+                  {t('appTagline')}
                 </p>
               </div>
             </Link>
@@ -76,11 +78,23 @@ export const Header: React.FC<HeaderProps> = ({ showBack, backTitle, onBack }) =
 
         {/* Right Action Icons & User Badge */}
         <div className="flex items-center gap-2.5">
+          {farmer && (
+            <button
+              type="button"
+              id="header-assistant-btn"
+              onClick={() => window.dispatchEvent(new Event('kisanqueue:open-assistant'))}
+              className="rounded-xl bg-emerald-800/60 p-2 text-white transition hover:bg-emerald-800 active:scale-95"
+              aria-label={t('assistantTitle')}
+              title={t('assistantTitle')}
+            >
+              <Bot className="h-5 w-5" />
+            </button>
+          )}
           <Link
             to="/notifications"
             id="nav-notifications-btn"
             className="relative p-2 rounded-xl bg-emerald-800/60 hover:bg-emerald-800 text-white transition active:scale-95"
-            aria-label="Notifications"
+            aria-label={t('navNotifications')}
           >
             <Bell className="w-5 h-5" />
             {unreadCount > 0 && (
@@ -95,10 +109,10 @@ export const Header: React.FC<HeaderProps> = ({ showBack, backTitle, onBack }) =
               to="/profile"
               id="header-profile-btn"
               className="flex items-center gap-2 pl-2 border-l border-emerald-600/60"
-              title={farmer.fullName}
+              title={displayFarmerName}
             >
               <div className="w-9 h-9 rounded-full bg-emerald-600 border-2 border-emerald-400 flex items-center justify-center text-sm font-bold text-white shadow-sm">
-                {farmer.fullName.charAt(0)}
+                {displayFarmerName.charAt(0)}
               </div>
             </Link>
           )}

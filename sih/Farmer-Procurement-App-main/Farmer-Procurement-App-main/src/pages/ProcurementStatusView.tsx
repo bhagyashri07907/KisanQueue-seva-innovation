@@ -55,15 +55,15 @@ export const ProcurementStatusView: React.FC = () => {
           <div className="w-16 h-16 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
             <Activity className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-bold text-slate-900">No Booking Found</h3>
+          <h3 className="text-lg font-bold text-slate-900">{t('noBookingFound')}</h3>
           <p className="text-xs text-slate-600">
-            You don't have any bookings to track right now.
+            {t('noBookingToTrack')}
           </p>
           <Link
             to="/select-crop"
             className="inline-block px-5 py-2.5 bg-emerald-700 text-white rounded-xl text-xs font-bold"
           >
-            Book Slot Now
+            {t('bookSlotNow')}
           </Link>
         </div>
       </MobileLayout>
@@ -92,7 +92,7 @@ export const ProcurementStatusView: React.FC = () => {
         {bookings.length > 1 && (
           <div>
             <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">
-              Select Booking:
+              {t('selectBooking')}
             </label>
             <select
               value={selectedBooking.id}
@@ -104,7 +104,7 @@ export const ProcurementStatusView: React.FC = () => {
             >
               {bookings.map((b) => (
                 <option key={b.id} value={b.id}>
-                  {b.cropName} ({b.date}) - Token: {b.digitalToken}
+                  {b.cropName} ({b.date}) - {t('tokenLabel')}: {b.digitalToken}
                 </option>
               ))}
             </select>
@@ -115,7 +115,7 @@ export const ProcurementStatusView: React.FC = () => {
         <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3.5">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Digital Token</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('tokenLabel')}</span>
               <p className="font-mono text-base font-black text-emerald-800 mt-0.5">
                 {selectedBooking.digitalToken}
               </p>
@@ -125,18 +125,18 @@ export const ProcurementStatusView: React.FC = () => {
               className="flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl hover:bg-emerald-100/70 transition shadow-2xs"
             >
               <Ticket className="w-3.5 h-3.5" />
-              <span>View Pass</span>
+              <span>{t('viewPass')}</span>
             </Link>
           </div>
 
           <div className="grid grid-cols-2 gap-2 text-xs text-slate-700 pt-1">
             <div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Crop:</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('cropShort')}</span>
               <span className="font-bold text-slate-800 mt-0.5 block">{selectedBooking.cropName}</span>
             </div>
             <div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Quantity:</span>
-              <span className="font-bold text-slate-800 mt-0.5 block">{selectedBooking.expectedQuantityQuintals} Quintals</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('expectedQuantity')}:</span>
+              <span className="font-bold text-slate-800 mt-0.5 block">{selectedBooking.expectedQuantityQuintals} {t('quintals')}</span>
             </div>
           </div>
 

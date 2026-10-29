@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { localizePersonName } from '../i18n/personName';
 import { Sprout, UserCheck, Lock, ArrowRight, AlertCircle, Users, ShieldCheck, MapPin } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { DEMO_FARMERS } from '../data/mockData';
 import { LanguageSelector } from '../components/LanguageSelector';
 
 export const Login: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { login, switchDemoFarmer } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const requestedReturnTo = searchParams.get('returnTo') || '';
+  const returnTo = requestedReturnTo.startsWith('/') && !requestedReturnTo.startsWith('//')
+    ? requestedReturnTo
+    : '/select-location';
 
   const [identifier, setIdentifier] = useState('MH-PUN-2026-0814');
   const [password, setPassword] = useState('password123');
@@ -21,7 +27,7 @@ export const Login: React.FC = () => {
     setError(null);
 
     if (!identifier.trim()) {
-      setError('Please enter your Farmer ID or Mobile Number');
+      setError(t('enterLoginId'));
       return;
     }
 
@@ -30,15 +36,17 @@ export const Login: React.FC = () => {
     setLoading(false);
 
     if (result.success) {
-      navigate('/select-location');
+      navigate(returnTo);
     } else {
-      setError(result.message || 'Login failed. Please check your credentials.');
+      setError(result.message || t('loginFailed'));
     }
   };
 
-  const handleQuickLogin = (farmerId: string) => {
-    switchDemoFarmer(farmerId);
-    navigate('/select-location');
+  const handleQuickLogin = async (farmerId: string) => {
+    setLoading(true);
+    await switchDemoFarmer(farmerId);
+    setLoading(false);
+    navigate(returnTo);
   };
 
   return (
@@ -68,13 +76,19 @@ export const Login: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-0.5 rounded-full text-[10px] font-bold text-emerald-800 border border-emerald-200 uppercase tracking-widest mb-1.5">
               <ShieldCheck className="w-3 h-3 text-emerald-700" />
-              <span>Farmer Authentication</span>
+              <span>{t('farmerAuthentication')}</span>
             </div>
-            <h2 className="text-xl font-black text-slate-800 tracking-tight">Farmer Portal Login</h2>
+            <h2 className="text-xl font-black text-slate-800 tracking-tight">{t('loginPortalTitle')}</h2>
             <p className="text-xs text-slate-500 mt-0.5">
-              Enter your official Farmer ID and credentials to access district procurement centers and book slots.
+              {t('loginSubtitle')}
             </p>
           </div>
+
+          {searchParams.get('reason') === 'expired' && (
+            <div className="bg-amber-50 border border-amber-200 text-amber-900 px-4 py-3 rounded-xl text-xs">
+              {t('sessionExpired')}
+            </div>
+          )}
 
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-xs flex items-center gap-2">
@@ -86,7 +100,7 @@ export const Login: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">
-                Farmer ID / Kisan Card Number <span className="text-red-500">*</span>
+                {t('farmerIdCardLabel')} <span className="text-red-500">*</span>
               </label>
               <div className="relative">
                 <UserCheck className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
@@ -95,13 +109,13 @@ export const Login: React.FC = () => {
                   type="text"
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="e.g. MH-PUN-2026-0814 or Mobile"
+                  placeholder={t('identifierPlaceholder')}
                   className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-900 focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                   required
                 />
               </div>
               <p className="text-[10px] text-slate-400 mt-1">
-                You can also enter your 10-digit registered mobile number.
+                {t('loginMobileHelp')}
               </p>
             </div>
 
@@ -151,7 +165,7 @@ export const Login: React.FC = () => {
                   className="p-2.5 bg-slate-50 hover:bg-emerald-50/70 border border-slate-200 hover:border-emerald-300 rounded-xl text-left transition flex items-center justify-between text-xs"
                 >
                   <div>
-                    <span className="font-bold text-slate-800 block">{f.fullName}</span>
+                    <span className="font-bold text-slate-800 block">{localizePersonName(f.fullName, i18n.resolvedLanguage || i18n.language)}</span>
                     <span className="text-[11px] text-slate-500 font-mono">ID: {f.farmerId}</span>
                   </div>
                   <div className="text-right">

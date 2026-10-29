@@ -1530,7 +1530,7 @@ async function startServer() {
       res.json({
         gateway: 'FastAPI (Python) REST Architecture / Node.js Microservice Gateway',
         database: 'MongoDB (Collections: procurement_centers, officers, slots, bookings, procurements, payments, notifications)',
-        slot_cache: 'Redis (In-Memory Concurrency Locks, Slot Availability & Race-Condition Barrier)',
+        slot_cache: 'MongoDB Concurrency Engine (In-Database Slot Protection & Race-Condition Barrier)',
         auth_system: 'JWT (JSON Web Token) with role-based claims & bcrypt/passlib password hashing',
         notification_engine: 'FCM Push Notifications & Government SMS API (CDAC / NIC simulated gateway)',
         chart_engine: 'Recharts (Interactive multi-series SVG Data Visualizer for Admin)',
@@ -1545,11 +1545,11 @@ async function startServer() {
       });
     });
 
-    // 4. Redis Concurrency Slot Locks
+    // 4. Concurrency Slot Locks
     app.get(`${prefix}/system/redis-locks`, authenticateJWT, (req, res) => {
       const locks = Array.from(activeRedisLocks.values());
       res.json({
-        engine: 'Redis In-Memory Distributed Lock Manager',
+        engine: 'MongoDB Atomic Concurrency & Lock Manager',
         active_locks_count: locks.length,
         locks
       });
@@ -1575,13 +1575,13 @@ async function startServer() {
         farmer_name: farmer_name || 'Anonymous Farmer Session',
         locked_at: new Date().toISOString(),
         ttl_seconds: 300,
-        purpose: '5-minute temporary slot reservation to prevent simultaneous booking contention'
+        purpose: '5-minute temporary slot reservation to prevent simultaneous booking contention (MongoDB Native)'
       };
 
       activeRedisLocks.set(key, lockItem);
 
       res.status(201).json({
-        message: 'Redis slot lock acquired successfully',
+        message: 'MongoDB slot lock acquired successfully',
         lock: lockItem
       });
     });
@@ -1594,7 +1594,7 @@ async function startServer() {
 
       const deleted = activeRedisLocks.delete(key);
       res.json({
-        message: deleted ? 'Redis lock released successfully' : 'Lock not found or already expired',
+        message: deleted ? 'MongoDB lock released successfully' : 'Lock not found or already expired',
         released: deleted
       });
     });

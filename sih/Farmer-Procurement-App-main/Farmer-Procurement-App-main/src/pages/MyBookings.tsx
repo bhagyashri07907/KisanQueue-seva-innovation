@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { translateBookingStatus } from '../i18n/status';
 import { useQuery } from '@tanstack/react-query';
 import { CalendarCheck, Calendar, Clock, Ticket, ChevronRight, Plus, Building2, Sprout } from 'lucide-react';
 import { MobileLayout } from '../layouts/MobileLayout';
@@ -38,7 +39,7 @@ export const MyBookings: React.FC = () => {
               {t('myBookingsTitle')}
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">
-              {bookings.length} {bookings.length === 1 ? 'reservation' : 'reservations'} found
+              {t('bookingsCount', { count: bookings.length })}
             </p>
           </div>
 
@@ -65,7 +66,7 @@ export const MyBookings: React.FC = () => {
                   : 'text-slate-500 hover:text-slate-900'
               }`}
             >
-              {tab === 'All' ? 'All' : tab === 'Confirmed' ? 'Active' : 'Completed'}
+              {tab === 'All' ? t('allFilter') : tab === 'Confirmed' ? t('activeFilter') : t('completedFilter')}
             </button>
           ))}
         </div>
@@ -81,7 +82,7 @@ export const MyBookings: React.FC = () => {
             </div>
             <h3 className="text-base font-bold text-slate-800">{t('noBookings')}</h3>
             <p className="text-xs text-slate-500 max-w-xs mx-auto">
-              You do not have any bookings in this category.
+              {t('noBookingsInCategory')}
             </p>
             <Link
               to="/select-crop"
@@ -115,7 +116,7 @@ export const MyBookings: React.FC = () => {
                         <h3 className="text-base font-bold text-slate-800 leading-tight group-hover:text-emerald-800 transition">
                           {booking.cropName}
                         </h3>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mt-0.5">ID: {booking.id}</span>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mt-0.5">{t('bookingIdShort')} {booking.id}</span>
                       </div>
                     </div>
 
@@ -126,7 +127,7 @@ export const MyBookings: React.FC = () => {
                           : 'bg-emerald-50 text-emerald-800 border-emerald-200'
                       }`}
                     >
-                      {booking.status}
+                      {translateBookingStatus(booking.status, t)}
                     </span>
                   </div>
 

@@ -81,7 +81,7 @@ export const AdminBookings: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black text-slate-900 tracking-tight">Statewide Bookings Monitoring</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight">Statewise Bookings Monitoring</h1>
             <SyntheticDataBadge />
           </div>
           <p className="text-xs text-slate-500 mt-0.5">

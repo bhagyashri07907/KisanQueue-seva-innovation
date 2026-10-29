@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { localizePersonName } from '../i18n/personName';
 import {
   CheckCircle2,
   Calendar,
@@ -20,7 +21,7 @@ import { useAuth } from '../hooks/useAuth';
 import { createBooking } from '../services/api';
 
 export const BookingConfirmation: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { farmer } = useAuth();
   const { state, selectedCrop, selectedCenter, setQuantity, resetFlow } = useBookingFlow();
@@ -33,7 +34,7 @@ export const BookingConfirmation: React.FC = () => {
     return (
       <MobileLayout showBack backTitle="Back" onBack={() => navigate('/slots')}>
         <div className="p-6 text-center space-y-4">
-          <p className="text-sm text-slate-600">Please complete previous booking steps first.</p>
+          <p className="text-sm text-slate-600">{t('previousStepsRequired')}</p>
           <button
             onClick={() => navigate('/select-crop')}
             className="px-6 py-2.5 bg-emerald-700 text-white font-bold rounded-xl text-sm"
@@ -45,22 +46,22 @@ export const BookingConfirmation: React.FC = () => {
     );
   }
 
-  const mspRate = selectedCrop?.mspPerQuintal || 4892;
-  const estimatedPayout = (quantity || 0) * mspRate;
+  const mspRate = selectedCrop?.mspPerQuintal;
+  const estimatedPayout = mspRate == null ? null : (quantity || 0) * mspRate;
 
   const handleConfirm = async () => {
     if (!farmer) {
-      setError('Please login to confirm booking.');
+      setError(t('loginRequiredBooking'));
       return;
     }
 
     if (!quantity || quantity <= 0) {
-      setError('Please enter a valid quantity in quintals.');
+      setError(t('validQuantity'));
       return;
     }
 
     if (quantity > 500) {
-      setError('Maximum procurement limit per token is 500 quintals.');
+      setError(t('quantityLimit'));
       return;
     }
 
@@ -86,10 +87,10 @@ export const BookingConfirmation: React.FC = () => {
         const tokenOrId = res.booking.digitalToken || res.booking.id;
         navigate(`/token/${tokenOrId}`);
       } else {
-        setError(res.error || 'Failed to confirm booking. Please try another slot.');
+        setError(res.error || t('bookingFailed'));
       }
     } catch (err: unknown) {
-      setError('Failed to confirm booking. Please try again.');
+      setError(t('bookingFailed'));
     } finally {
       setIsSubmitting(false);
     }
@@ -102,8 +103,8 @@ export const BookingConfirmation: React.FC = () => {
           {/* Progress Indicator */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-400">
-              <span className="text-emerald-800 font-black">Step 4 of 4</span>
-              <span>Confirm & Token</span>
+              <span className="text-emerald-800 font-black">{t('stepProgress', { current: 4 })}</span>
+              <span>{t('stepConfirmToken')}</span>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-emerald-600 h-full w-full rounded-full transition-all" />
@@ -143,7 +144,7 @@ export const BookingConfirmation: React.FC = () => {
             <div className="pb-3 border-b border-slate-100 flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('farmerName')}</span>
-                <span className="text-base font-bold text-slate-800 mt-0.5 block">{farmer?.fullName}</span>
+                <span className="text-base font-bold text-slate-800 mt-0.5 block">{localizePersonName(farmer?.fullName, i18n.resolvedLanguage || i18n.language)}</span>
               </div>
               <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">
                 {farmer?.farmerId}
@@ -164,7 +165,7 @@ export const BookingConfirmation: React.FC = () => {
               <div className="text-right">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{t('mspRate')}</span>
                 <span className="text-sm font-bold text-emerald-800 mt-0.5 block">
-                  ₹{mspRate.toLocaleString('en-IN')}/{t('perQuintal')}
+                  {mspRate == null ? 'Not listed in source data' : `₹${mspRate.toLocaleString('en-IN')}/${t('perQuintal')}`}
                 </span>
               </div>
             </div>
@@ -210,7 +211,7 @@ export const BookingConfirmation: React.FC = () => {
                 <Scale className="w-4 h-4 text-emerald-700" />
                 <span>{t('expectedQuantity')} <span className="text-red-500">*</span></span>
               </label>
-              <span className="text-xs text-slate-400 font-medium">(in Quintals)</span>
+                <span className="text-xs text-slate-400 font-medium">({t('quintals')})</span>
             </div>
 
             <div className="relative">
@@ -237,7 +238,7 @@ export const BookingConfirmation: React.FC = () => {
                 <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">{t('estimatedPayout')}:</span>
               </div>
               <span className="text-lg font-black text-emerald-950">
-                ₹{estimatedPayout.toLocaleString('en-IN')}
+                {estimatedPayout == null ? 'Not available from source data' : `₹${estimatedPayout.toLocaleString('en-IN')}`}
               </span>
             </div>
           </div>
@@ -261,7 +262,7 @@ export const BookingConfirmation: React.FC = () => {
             {isSubmitting ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
-                <span>Generating Token...</span>
+                <span>{t('generatingToken')}</span>
               </>
             ) : (
               <>

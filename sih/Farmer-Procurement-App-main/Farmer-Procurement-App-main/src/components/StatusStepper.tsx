@@ -24,7 +24,7 @@ export const StatusStepper: React.FC<StatusStepperProps> = ({
       label: t('stepBooked'),
       desc: t('statusBookedDesc'),
       icon: Clock,
-      timestamp: 'Slot confirmed',
+      timestamp: t('slotConfirmedTimestamp'),
     },
     {
       key: 'Verified',
@@ -69,7 +69,7 @@ export const StatusStepper: React.FC<StatusStepperProps> = ({
   return (
     <div id="procurement-status-stepper" className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
       <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
-        Procurement Progress
+        {t('procurementProgress')}
       </h2>
 
       <div className="relative flex flex-col">

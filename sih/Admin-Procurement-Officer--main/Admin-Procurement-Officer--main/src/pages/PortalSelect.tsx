@@ -84,7 +84,7 @@ export const PortalSelect: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle className="w-4 h-4 text-[#064E3B] shrink-0" />
-                  <span className="font-medium">Statewide Monitoring &amp; Reports</span>
+                  <span className="font-medium">Statewise Monitoring &amp; Reports</span>
                 </div>
               </div>
 
@@ -198,7 +198,7 @@ export const PortalSelect: React.FC = () => {
 
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
-        KisanQueue Digital Agricultural Procurement System &bull; Prototype Synthetic Government Dataset (Maharashtra)
+        KisanQueue Digital Agricultural Procurement System
       </footer>
     </div>
   );

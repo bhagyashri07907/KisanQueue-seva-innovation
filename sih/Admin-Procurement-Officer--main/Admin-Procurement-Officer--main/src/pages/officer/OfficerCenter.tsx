@@ -9,12 +9,14 @@ import {
   Scale,
   ShieldAlert,
   CheckCircle,
-  Globe
+  Search
 } from 'lucide-react';
 import { SyntheticDataBadge } from '../../components/SyntheticDataBadge';
 
 export const OfficerCenter: React.FC = () => {
   const [center, setCenter] = useState<ProcurementCenter | null>(null);
+  const [masterCenters, setMasterCenters] = useState<ProcurementCenter[]>([]);
+  const [catalogSearch, setCatalogSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,8 +26,12 @@ export const OfficerCenter: React.FC = () => {
   const fetchCenter = async () => {
     try {
       setLoading(true);
-      const res = await apiRequest<{ center: ProcurementCenter }>('/officer/my-center');
+      const [res, master] = await Promise.all([
+        apiRequest<{ center: ProcurementCenter }>('/officer/my-center'),
+        apiRequest<{ centers: ProcurementCenter[] }>('/officer/verified-centers'),
+      ]);
       setCenter(res.center);
+      setMasterCenters(master.centers || []);
     } catch (err) {
       console.error(err);
     } finally {
@@ -85,9 +91,9 @@ export const OfficerCenter: React.FC = () => {
             <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-[#053e2f] text-[#FFD700] border border-[#043326]">
               {center.center_id}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/10 text-emerald-200 border border-white/20">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/10 text-emerald-200 border border-white/20">
               <CheckCircle className="w-3.5 h-3.5 text-[#FFD700]" />
-              Operational &bull; Active Master Data
+              {center.catalog_source === 'verified_procurement_master' ? 'Seasonal Reference' : 'Assigned Center Record'}
             </span>
           </div>
           <h2 className="text-lg font-bold">{center.center_name}</h2>
@@ -113,7 +119,7 @@ export const OfficerCenter: React.FC = () => {
                 Coordinates (GPS)
               </span>
               <span className="text-sm font-mono text-slate-800">
-                {(center.latitude ?? 18.5204).toFixed(4)}° N, {(center.longitude ?? 73.8567).toFixed(4)}° E
+                {center.latitude == null || center.longitude == null ? 'Not supplied in source data' : `${center.latitude.toFixed(4)}° N, ${center.longitude.toFixed(4)}° E`}
               </span>
             </div>
           </div>
@@ -125,7 +131,7 @@ export const OfficerCenter: React.FC = () => {
                 Total Intake Capacity
               </span>
               <span className="text-base font-extrabold text-slate-900 font-mono">
-                {(center.intake_capacity ?? 5000).toLocaleString()} Quintals
+                {center.intake_capacity == null ? 'Not supplied' : `${center.intake_capacity.toLocaleString()} Quintals`}
               </span>
             </div>
             <div>
@@ -133,7 +139,7 @@ export const OfficerCenter: React.FC = () => {
                 Daily Intake Limit
               </span>
               <span className="text-base font-extrabold text-emerald-700 font-mono">
-                {center.daily_capacity ?? 500} Q / Day
+                {center.daily_capacity == null ? 'Not supplied' : `${center.daily_capacity} Q / Day`}
               </span>
             </div>
             <div>
@@ -143,7 +149,7 @@ export const OfficerCenter: React.FC = () => {
               <span className="text-sm font-mono font-bold text-slate-800">
                 {typeof center.operating_hours === 'object' && center.operating_hours
                   ? `${center.operating_hours.start || '09:00'} - ${center.operating_hours.end || '17:00'}`
-                  : (center.operating_hours || '09:00 - 17:00')}
+                  : (center.operating_hours || 'Not supplied')}
               </span>
             </div>
           </div>
@@ -151,7 +157,7 @@ export const OfficerCenter: React.FC = () => {
           {/* Crops */}
           <div className="py-4">
             <span className="block text-slate-500 font-semibold uppercase tracking-wider text-[10px] mb-2">
-              Government Mandated Procurement Crops
+              Crops Listed in Center Master
             </span>
             <div className="flex flex-wrap gap-2">
               {(center.accepted_crops || ['Soybean', 'Wheat', 'Gram']).map((crop, i) => (
@@ -166,6 +172,14 @@ export const OfficerCenter: React.FC = () => {
             </div>
           </div>
 
+          {center.catalog_source === 'verified_procurement_master' && (
+            <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-950">
+              <strong>{center.dataset_label}</strong><br />
+              Agency: {center.agency || 'Not listed'} · Season: {(center.seasons || []).join(', ') || 'Not listed'} · Verified: {center.verification_date || 'Not listed'}<br />
+              {center.live_status || 'Live operating status is not supplied by this master.'}
+            </div>
+          )}
+
           {/* Security & Access Boundary Note */}
           <div className="pt-4 text-slate-500 leading-relaxed text-[11px]">
             This officer login is authorized to perform procurement verification, digital weighment, quality testing,
@@ -174,6 +188,34 @@ export const OfficerCenter: React.FC = () => {
           </div>
         </div>
       </div>
+      <section className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+        <div className="p-5 border-b border-slate-100">
+          <h2 className="text-lg font-bold text-slate-900">Verified Procurement Master</h2>
+          <p className="text-xs text-slate-500 mt-1">Read-only district and crop references from the supplied master. This catalogue does not contain live slots or current operating confirmation.</p>
+          <label className="mt-3 flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm">
+            <Search className="w-4 h-4 text-slate-400" />
+            <input value={catalogSearch} onChange={(event) => setCatalogSearch(event.target.value)} placeholder="Filter by center, district, or crop" className="w-full outline-none" />
+          </label>
+        </div>
+        <div className="max-h-[28rem] overflow-auto">
+          <table className="w-full text-left text-xs">
+            <thead className="sticky top-0 bg-slate-50 text-slate-500 uppercase">
+              <tr><th className="p-3">Center</th><th className="p-3">District / Taluka</th><th className="p-3">Agency / season</th><th className="p-3">Crops</th><th className="p-3">Source status</th></tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {masterCenters.filter((item) => `${item.center_name} ${item.district} ${item.taluka} ${item.accepted_crops.join(' ')}`.toLowerCase().includes(catalogSearch.toLowerCase())).map((item) => (
+                <tr key={item.center_id}>
+                  <td className="p-3 font-semibold text-slate-900">{item.center_name}<span className="block font-mono text-slate-400">{item.center_id}</span></td>
+                  <td className="p-3">{item.district} / {item.taluka}</td>
+                  <td className="p-3">{item.agency || 'Not listed'}<span className="block text-slate-500">{item.seasons?.join(', ')}</span></td>
+                  <td className="p-3">{item.accepted_crops.join(', ')}</td>
+                  <td className="p-3 text-amber-800">{item.live_status || 'Seasonal reference'}<span className="block text-slate-500">Verified {item.verification_date || 'date not supplied'}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
   );
 };

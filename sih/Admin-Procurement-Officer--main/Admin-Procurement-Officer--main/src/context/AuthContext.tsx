@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '../types';
-import { getAuthToken, getStoredUser, setAuthSession, clearAuthSession, apiRequest } from '../lib/api';
+import { getAuthToken, getTokenRole, getStoredUser, setAuthSession, clearAuthSession, apiRequest } from '../lib/api';
 
 interface AuthContextType {
   user: User | null;
@@ -22,10 +22,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const token = getAuthToken();
     const stored = getStoredUser();
-    if (token && stored) {
+    const tokenRole = getTokenRole(token);
+    const storedRole = typeof stored?.role === 'string' ? stored.role.toLowerCase() : null;
+    if (token && stored && tokenRole && tokenRole === storedRole) {
       setUser(stored);
     } else {
+      clearAuthSession();
       setUser(null);
+      if (token && stored && window.location.pathname !== '/officer/login' && window.location.pathname !== '/admin/login') {
+        const loginPath = storedRole === 'admin' ? '/admin/login' : '/officer/login';
+        window.location.replace(`${loginPath}?reason=permissions`);
+      }
     }
     setIsLoading(false);
   }, []);

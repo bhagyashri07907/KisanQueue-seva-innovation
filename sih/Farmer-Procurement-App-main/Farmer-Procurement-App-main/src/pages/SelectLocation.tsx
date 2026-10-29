@@ -14,8 +14,7 @@ import {
 import { MobileLayout } from '../layouts/MobileLayout';
 import { useAuth } from '../hooks/useAuth';
 import { useBookingFlow } from '../hooks/useBookingFlow';
-import { DEMO_CENTERS } from '../data/mockData';
-import { MAHARASHTRA_DISTRICTS } from '../data/districts';
+import { getProcurementDistricts, ProcurementDistrict } from '../services/api';
 
 export const SelectLocation: React.FC = () => {
   const { t } = useTranslation();
@@ -30,22 +29,31 @@ export const SelectLocation: React.FC = () => {
   const [selectedTaluka, setSelectedTaluka] = useState<string>(defaultTaluka);
   const [detectingGps, setDetectingGps] = useState<boolean>(false);
   const [gpsSuccessMessage, setGpsSuccessMessage] = useState<string | null>(null);
+  const [districts, setDistricts] = useState<ProcurementDistrict[]>([]);
+
+  useEffect(() => {
+    getProcurementDistricts().then((items) => {
+      setDistricts(items);
+      if (items.length && !items.some((item) => item.name.toLowerCase() === selectedDistrict.toLowerCase())) {
+        setSelectedDistrict(items[0].name);
+        setSelectedTaluka(items[0].talukas[0] || '');
+      }
+    });
+  }, []);
 
   // Update taluka when district changes if not in new district
   useEffect(() => {
-    const currentDist = MAHARASHTRA_DISTRICTS.find(
+    const currentDist = districts.find(
       (d) => d.name.toLowerCase() === selectedDistrict?.toLowerCase()
     );
     if (currentDist && !currentDist.talukas.includes(selectedTaluka)) {
       setSelectedTaluka(currentDist.talukas[0] || '');
     }
-  }, [selectedDistrict, selectedTaluka]);
+  }, [districts, selectedDistrict, selectedTaluka]);
 
   // Count centers in district
   const getCenterCount = (districtName: string) => {
-    return DEMO_CENTERS.filter(
-      (c) => c.district.toLowerCase() === districtName.toLowerCase()
-    ).length;
+    return districts.find((district) => district.name.toLowerCase() === districtName.toLowerCase())?.center_count || 0;
   };
 
   const handleGpsDetect = () => {
@@ -55,18 +63,22 @@ export const SelectLocation: React.FC = () => {
     setTimeout(() => {
       setDetectingGps(false);
       // Simulate GPS resolving to farmer's district
-      const targetDistrict = farmer?.district || 'Pune';
-      const targetTaluka = farmer?.taluka || 'Baramati';
+      const matchedDistrict = districts.find((district) => district.name.toLowerCase() === farmer?.district?.toLowerCase()) || districts[0];
+      const targetDistrict = matchedDistrict?.name || '';
+      const targetTaluka = matchedDistrict?.talukas.includes(farmer?.taluka || '') ? farmer!.taluka : (matchedDistrict?.talukas[0] || '');
       setSelectedDistrict(targetDistrict);
       setSelectedTaluka(targetTaluka);
-      setGpsSuccessMessage(`GPS matched coordinates to ${targetTaluka}, ${targetDistrict} District`);
+    setGpsSuccessMessage(t('selectedGpsLocation', { taluka: targetTaluka, district: targetDistrict }));
     }, 800);
   };
 
   const handleUseRegistered = () => {
     if (farmer) {
-      setSelectedDistrict(farmer.district);
-      setSelectedTaluka(farmer.taluka);
+      const registeredDistrict = districts.find((district) => district.name.toLowerCase() === farmer.district.toLowerCase());
+      if (registeredDistrict) {
+        setSelectedDistrict(registeredDistrict.name);
+        setSelectedTaluka(registeredDistrict.talukas.includes(farmer.taluka) ? farmer.taluka : registeredDistrict.talukas[0] || '');
+      }
     }
   };
 
@@ -75,7 +87,7 @@ export const SelectLocation: React.FC = () => {
     navigate('/select-crop');
   };
 
-  const currentDistObj = MAHARASHTRA_DISTRICTS.find(
+  const currentDistObj = districts.find(
     (d) => d.name.toLowerCase() === selectedDistrict?.toLowerCase()
   );
 
@@ -90,8 +102,8 @@ export const SelectLocation: React.FC = () => {
           {/* Progress Indicator */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-400">
-              <span className="text-emerald-800 font-black">Step 1 of 4</span>
-              <span>Set Location</span>
+              <span className="text-emerald-800 font-black">{t('stepProgress', { current: 1 })}</span>
+              <span>{t('stepSetLocation')}</span>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-emerald-600 h-full w-1/4 rounded-full transition-all" />
@@ -103,13 +115,13 @@ export const SelectLocation: React.FC = () => {
             <div>
               <div className="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-0.5 rounded-full text-[10px] font-bold text-emerald-800 border border-emerald-200 uppercase tracking-widest mb-1.5">
                 <MapPin className="w-3 h-3 text-emerald-700" />
-                <span>Location Confirmation</span>
+                <span>{t('locationConfirmation')}</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-slate-800 leading-tight">
-                Select Your District
+                {t('selectDistrictTitle')}
               </h2>
               <p className="text-xs text-slate-500 mt-1">
-                Authorized procurement centers and crop intake slots are allocated on the basis of your district.
+                {t('districtMasterDescription')}
               </p>
             </div>
             <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800 shrink-0">
@@ -122,13 +134,13 @@ export const SelectLocation: React.FC = () => {
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">
-                  Registered Farm Location
+                  {t('registeredFarmLocation')}
                 </span>
                 <p className="text-sm font-black text-slate-800 mt-0.5">
                   {farmer.village}, Tal. {farmer.taluka}, Dist. {farmer.district}
                 </p>
                 <p className="text-xs text-slate-500">
-                  Farmer ID: <span className="font-semibold text-slate-700">{farmer.farmerId}</span>
+                  {t('farmerId')}: <span className="font-semibold text-slate-700">{farmer.farmerId}</span>
                 </p>
               </div>
               <button
@@ -143,7 +155,7 @@ export const SelectLocation: React.FC = () => {
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
-                <span>Use Registered</span>
+                <span>{t('useRegistered')}</span>
               </button>
             </div>
           )}
@@ -157,7 +169,7 @@ export const SelectLocation: React.FC = () => {
               className="flex-1 border border-dashed border-emerald-300 bg-emerald-50/60 hover:bg-emerald-50 text-emerald-800 py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition"
             >
               <Navigation className={`w-3.5 h-3.5 ${detectingGps ? 'animate-spin' : ''}`} />
-              <span>{detectingGps ? 'Detecting via GPS coordinates...' : 'Auto-Detect Current Location (GPS)'}</span>
+              <span>{detectingGps ? t('detectingGps') : t('autoDetectGps')}</span>
             </button>
           </div>
 
@@ -171,10 +183,10 @@ export const SelectLocation: React.FC = () => {
           {/* District Grid */}
           <div className="space-y-2">
             <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-              Select District (जिल्हा निवडा)
+              {t('selectDistrict')}
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="district-selector-grid">
-              {MAHARASHTRA_DISTRICTS.map((dist) => {
+              {districts.map((dist) => {
                 const count = getCenterCount(dist.name);
                 const isSelected = selectedDistrict?.toLowerCase() === dist.name.toLowerCase();
 
@@ -199,14 +211,14 @@ export const SelectLocation: React.FC = () => {
                         )}
                       </div>
                       <span className="text-[11px] text-slate-500 font-medium block">
-                        {dist.nameMr}
+                          {t('listedCentersCount', { count: dist.center_count })}
                       </span>
                     </div>
 
                     <div className="mt-3 flex items-center justify-between pt-2 border-t border-slate-100 text-[10px]">
-                      <span className="text-slate-400 font-medium">Centers</span>
+                <span className="text-slate-400 font-medium">{t('listedCenters')}</span>
                       <span className="font-bold text-emerald-800 bg-emerald-100/60 px-2 py-0.5 rounded-md">
-                        {count} Active
+                        {t('listedCentersCount', { count })}
                       </span>
                     </div>
                   </button>
@@ -219,7 +231,7 @@ export const SelectLocation: React.FC = () => {
           {currentDistObj && (
             <div className="space-y-1.5 pt-1">
               <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Select Taluka / Tehsil in {selectedDistrict}
+                {t('selectTaluka', { district: selectedDistrict })}
               </label>
               <div className="flex flex-wrap gap-2">
                 {currentDistObj.talukas.map((tal) => {
@@ -247,7 +259,7 @@ export const SelectLocation: React.FC = () => {
           <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-2.5 text-xs text-slate-600">
             <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              Once you confirm your district (<span className="font-bold text-slate-800">{selectedDistrict}</span>), the system will display only authorized procurement centers operating within {selectedDistrict} that accept your selected crop.
+              {t('districtConfirmationNotice', { district: selectedDistrict })}
             </p>
           </div>
 
@@ -258,7 +270,7 @@ export const SelectLocation: React.FC = () => {
             onClick={handleProceed}
             className="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-4 rounded-2xl font-bold text-base shadow-lg shadow-emerald-700/20 active:scale-[0.99] flex items-center justify-center gap-2 transition"
           >
-            <span>Proceed to Select Crop</span>
+            <span>{t('proceedSelectCrop')}</span>
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>

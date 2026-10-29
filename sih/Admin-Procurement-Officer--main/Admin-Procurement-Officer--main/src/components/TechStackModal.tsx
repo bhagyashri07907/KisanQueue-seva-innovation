@@ -68,7 +68,7 @@ export const TechStackModal: React.FC<Props> = ({ isOpen, onClose }) => {
           center_name: 'Government Procurement Center - Baramati'
         })
       });
-      setToast(`Redis concurrency lock established on ${newSlotId} for ${newFarmerName}`);
+      setToast(`MongoDB concurrency lock established on ${newSlotId} for ${newFarmerName}`);
       loadSystemData();
       setTimeout(() => setToast(null), 4000);
     } catch (err: any) {
@@ -83,7 +83,7 @@ export const TechStackModal: React.FC<Props> = ({ isOpen, onClose }) => {
         method: 'POST',
         body: JSON.stringify({ key })
       });
-      setToast(`Redis lock released: ${key}`);
+      setToast(`MongoDB lock released: ${key}`);
       loadSystemData();
       setTimeout(() => setToast(null), 4000);
     } catch (err: any) {
@@ -117,10 +117,10 @@ export const TechStackModal: React.FC<Props> = ({ isOpen, onClose }) => {
       status: `${techStack?.metrics.centers_in_db || 50} Centers Indexed`
     },
     {
-      tech: 'Redis In-Memory Engine',
+      tech: 'MongoDB Concurrency Engine',
       icon: Lock,
       color: 'text-rose-700 bg-rose-50 border-rose-200',
-      role: 'Real-time slot availability, temporary checkout locks, preventing double-bookings',
+      role: 'Atomic slot reservation, concurrency barriers & race-condition prevention (100% MongoDB)',
       status: `${locks.length} Active Locks`
     },
     {
@@ -229,11 +229,11 @@ export const TechStackModal: React.FC<Props> = ({ isOpen, onClose }) => {
                 <div className="flex items-center gap-2">
                   <Lock className="w-4 h-4 text-rose-700" />
                   <h3 className="text-sm font-bold text-slate-900">
-                    Redis Temporary Slot Locks &amp; Race-Condition Barrier
+                    MongoDB Concurrency Barrier &amp; Slot Lock Manager
                   </h3>
                 </div>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Protects slot intake capacity from simultaneous double-booking during farmer mobile checkout
+                  Protects slot intake capacity from simultaneous double-booking natively via MongoDB
                 </p>
               </div>
               <button
@@ -250,7 +250,7 @@ export const TechStackModal: React.FC<Props> = ({ isOpen, onClose }) => {
               <table className="w-full text-left text-xs">
                 <thead className="bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200">
                   <tr>
-                    <th className="px-3 py-2">Redis Key</th>
+                    <th className="px-3 py-2">Lock Identifier / Key</th>
                     <th className="px-3 py-2">Target Slot</th>
                     <th className="px-3 py-2">Locked For (Farmer)</th>
                     <th className="px-3 py-2">Purpose</th>
@@ -262,7 +262,7 @@ export const TechStackModal: React.FC<Props> = ({ isOpen, onClose }) => {
                   {locks.length === 0 ? (
                     <tr>
                       <td colSpan={6} className="px-3 py-6 text-center text-slate-400 text-xs">
-                        No active Redis concurrency locks currently held in memory.
+                        No active MongoDB concurrency locks currently held in database.
                       </td>
                     </tr>
                   ) : (
